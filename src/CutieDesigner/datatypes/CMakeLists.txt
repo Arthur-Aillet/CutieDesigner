@@ -19,6 +19,7 @@ target_include_directories(datatypes PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(datatypes PUBLIC
   Qt6::Core
   Qt6::Gui
+  Qt6::Quick
   glm
   NodeEditor
 )
