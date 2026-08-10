@@ -36,6 +36,7 @@ FlexboxLayout {
         direction: FlexboxLayout.RowReverse
         min: sliderInputControl.node.min
         max: sliderInputControl.node.max
+        decimal: 5
         value: {
             value = sliderInputControl.node.value;
         }

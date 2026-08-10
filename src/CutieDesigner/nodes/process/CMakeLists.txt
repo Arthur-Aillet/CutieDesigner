@@ -62,6 +62,7 @@ target_link_libraries(process PUBLIC
   CutieUiModule
   vivid
   datatypes
+  time
 )
 
 target_compile_definitions(process PRIVATE GLM_ENABLE_EXPERIMENTAL)

@@ -76,7 +76,6 @@ void TextTyperNode::setPlay(bool playState) {
     return;
 
   _playing = playState;
-
   if (playState) {
     // TODO: Prevent Starting with an eventloop instantanous (ex: Only Insert Text with length 0)
     // this cause a crash

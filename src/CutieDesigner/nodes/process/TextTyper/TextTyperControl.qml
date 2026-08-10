@@ -5,6 +5,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import NodeEditor
 import CutieDesigner.Nodes.Process
+import CutieDesigner.Time
 import CutieUiModule as Cute
 
 FlexboxLayout {
@@ -12,6 +13,13 @@ FlexboxLayout {
     direction: FlexboxLayout.Column
 
     required property TextTyperNode node
+
+    Connections {
+        target: TimeController
+        function onPlayingChanged() {
+            textTyper.node.play = TimeController.playing;
+        }
+    }
 
     Item {
         Layout.fillWidth: true
