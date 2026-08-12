@@ -11,7 +11,6 @@ target_include_directories(time PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_directories(time
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_link_libraries(time PUBLIC

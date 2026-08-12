@@ -1,5 +1,7 @@
 add_subdirectory(FileManager)
 
+qt_policy(SET QTP0005 NEW)
+
 qt_add_qml_module(app
   STATIC
   URI CutieDesigner.App
@@ -14,13 +16,13 @@ qt_add_qml_module(app
   QtQuick QtQuick.Controls QtQuick.Layout QtQuick.Dialogs
   CutieDesigner.Nodes.Display CutieDesigner.Stats CutieDesigner.App.FileManager
   CutieUiModule
-  NodeEditor
+
+  TARGET NodeEditor
 )
 
 target_link_directories(app
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

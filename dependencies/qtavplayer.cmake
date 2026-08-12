@@ -3,7 +3,6 @@ FetchContent_Declare(qtavplayer
     GIT_TAG         f7947fd081b46feeb8d7149d0265774cd0cb2d6f
 )
 
-
 list(APPEND CMAKE_LIBRARY_PATH "/usr/lib/x86_64-linux-gnu/")
 
 FetchContent_GetProperties(qtavplayer)

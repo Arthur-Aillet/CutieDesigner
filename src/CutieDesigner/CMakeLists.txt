@@ -11,7 +11,6 @@ qt_add_executable(CutieDesigner
 target_link_directories(CutieDesigner
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_include_directories(CutieDesigner PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

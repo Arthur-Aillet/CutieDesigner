@@ -27,7 +27,6 @@ qt_add_qml_module(CutieUiModule
 
 target_include_directories(CutieUiModule PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_link_libraries(CutieUiModule

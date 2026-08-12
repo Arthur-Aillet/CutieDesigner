@@ -79,7 +79,6 @@ qt_add_qml_module(display
 target_link_directories(display
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_include_directories(display

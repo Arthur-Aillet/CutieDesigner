@@ -41,7 +41,6 @@ qt_add_qml_module(process
 target_link_directories(process
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_include_directories(process

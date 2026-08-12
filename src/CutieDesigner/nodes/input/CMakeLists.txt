@@ -40,13 +40,10 @@ qt_add_qml_module(input
 target_link_directories(input
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${LIB_TARGET_LINK_DIRECTORIES}
 )
 
 target_include_directories(input
   PUBLIC
-  ${LIB_TARGET_LINK_DIRECTORIES}
-
   ColorInput/
   GradientInput/
   NumberInput/
