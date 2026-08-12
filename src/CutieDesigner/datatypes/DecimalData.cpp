@@ -3,7 +3,8 @@
 #include "GradientData.hpp"
 #include "NodeData.hpp"
 #include "TextData.hpp"
-#include "Vec2Data.hpp"
+
+#include <qvectornd.h>
 
 DecimalDataType::DecimalDataType()
     : NodeDataType("decimal", "Decimal", {"decimal", "text", "col", "gradient-01", "vec2-01"}) {}

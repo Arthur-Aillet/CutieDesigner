@@ -1,9 +1,6 @@
 #pragma once
 
 #include "NodeData.hpp"
-#include <qbrush.h>
-#include <qvariant.h>
-#include <qvectornd.h>
 
 struct DecimalDataType : public NodeDataType {
   DecimalDataType();

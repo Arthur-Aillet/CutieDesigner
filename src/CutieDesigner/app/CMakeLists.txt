@@ -1,4 +1,3 @@
-add_subdirectory(menu)
 add_subdirectory(FileManager)
 
 qt_add_qml_module(app
@@ -10,9 +9,10 @@ qt_add_qml_module(app
   Timeline.qml
   NodeView.qml
   App.qml
+
   DEPENDENCIES
   QtQuick QtQuick.Controls QtQuick.Layout QtQuick.Dialogs
-  CutieDesigner.Nodes.Display CutieDesigner.Stats CutieDesigner.App.Menu CutieDesigner.App.FileManager
+  CutieDesigner.Nodes.Display CutieDesigner.Stats CutieDesigner.App.FileManager
   CutieUiModule
   NodeEditor
 )
@@ -32,7 +32,6 @@ target_link_libraries(app PRIVATE
   Qt6::Qml
   NodeEditor
   CutieUiModule
-  menu
   display
   time
 )

@@ -9,7 +9,8 @@
 
 TimeController::TimeController()
     : _currentTime(0.0), _minFrame(0), _maxFrame(900), _currentFrame(0), _playing(false),
-      _frames{std::vector<std::optional<QImage>>(_maxFrame - _minFrame, std::optional<QImage>())} {}
+      _frames{
+          std::vector<std::optional<QImage>>(_maxFrame - _minFrame + 1, std::optional<QImage>())} {}
 
 TimeController::~TimeController() {
   if (_window != nullptr)
@@ -35,6 +36,10 @@ void TimeController::linkCutieWindow(CutieWindow *window) {
   if (instance->_window != nullptr) {
     QObject::connect(instance->_window, SIGNAL(frameSwapped()), instance, SLOT(frameSwapped()));
     if (instance->_playing) {
+      if (instance->_recording) {
+        QImage capture = instance->_window->grabWindow();
+        instance->_frames[instance->_currentFrame - instance->_minFrame] = capture;
+      }
       instance->_window->startRequestRefresh(instance);
       instance->_lastPoint = std::chrono::steady_clock::now();
     }
@@ -46,7 +51,7 @@ void TimeController::frameSwapped() {
   if (_playing) {
     if (_recording) {
       QImage capture = _window->grabWindow();
-      _frames[_currentFrame - _minFrame] = capture;
+      instance->_frames[_currentFrame - _minFrame + 1] = capture;
     }
 
     _currentFrame += 1;
@@ -89,7 +94,7 @@ void TimeController::setMinFrame(uint newMinFrame) {
   } else {
     _minFrame = newMinFrame;
   }
-  _frames.resize(_maxFrame - _minFrame, std::optional<QImage>());
+  _frames.resize(_maxFrame - _minFrame + 1, std::optional<QImage>());
   emit minFrameChanged();
   if (_currentFrame < _minFrame)
     setCurrentFrame(_minFrame);
@@ -105,7 +110,7 @@ void TimeController::setMaxFrame(uint newMaxFrame) {
   } else {
     _maxFrame = newMaxFrame;
   }
-  _frames.resize(_maxFrame - _minFrame, std::optional<QImage>());
+  _frames.resize(_maxFrame - _minFrame + 1, std::optional<QImage>());
   emit maxFrameChanged();
   if (_currentFrame > _maxFrame)
     setCurrentFrame(_maxFrame);
@@ -116,6 +121,10 @@ void TimeController::setPlaying(bool playing) {
   _playing = playing;
   if (playing) {
     _lastPoint = std::chrono::steady_clock::now();
+    if (_recording) {
+      QImage capture = _window->grabWindow();
+      _frames[_currentFrame - _minFrame] = capture;
+    }
     _window->startRequestRefresh(this);
   } else {
     _window->stopRequestRefresh(this);
@@ -153,7 +162,7 @@ void TimeController::setRecording(bool recording) {
     };
     auto future = QtConcurrent::task(std::move(task)).withArguments(_frames).spawn();
   }
-  _frames.assign(_maxFrame - _minFrame, std::optional<QImage>());
+  _frames.assign(_maxFrame - _minFrame + 1, std::optional<QImage>());
   _recording = recording;
   emit recordingChanged();
 }
