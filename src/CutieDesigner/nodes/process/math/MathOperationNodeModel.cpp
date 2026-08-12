@@ -1,14 +1,14 @@
 #include "MathOperationNodeModel.hpp"
 #include "DecimalData.hpp"
 
-unsigned int MathOperationNodeModel::nPorts(PortType portType) const {
-  if (portType == PortType::In)
+unsigned int MathOperationNodeModel::nPorts(PortSide portSide) const {
+  if (portSide == PortSide::In)
     return nbInputs();
   else
     return 1;
 }
 
-NodeDataType MathOperationNodeModel::dataType(PortType, PortIndex) const {
+NodeDataType MathOperationNodeModel::dataType(PortSide, PortIndex) const {
   return DecimalData().type();
 }
 

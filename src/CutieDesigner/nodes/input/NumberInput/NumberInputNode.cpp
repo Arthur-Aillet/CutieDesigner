@@ -20,9 +20,9 @@ void NumberInputNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int NumberInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int NumberInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
   default:
     return 0;
@@ -62,7 +62,7 @@ void NumberInputNode::onTextEdited() {
   }
 }
 
-NodeDataType NumberInputNode::dataType(PortType, PortIndex id) const {
+NodeDataType NumberInputNode::dataType(PortSide, PortIndex id) const {
   return DecimalData().type();
 }
 

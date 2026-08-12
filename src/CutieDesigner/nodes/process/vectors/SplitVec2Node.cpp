@@ -1,5 +1,5 @@
-#include "DecimalData.hpp"
 #include "SplitVec2Node.hpp"
+#include "DecimalData.hpp"
 #include "Vec2Data.hpp"
 #include <memory>
 #include <qcolor.h>
@@ -9,18 +9,18 @@ SplitVec2Node::SplitVec2Node(QQmlEngine *engine)
     : NodeDelegateModel(engine), _xData(std::make_shared<DecimalData>(_x)),
       _yData(std::make_shared<DecimalData>(_y)) {}
 
-unsigned int SplitVec2Node::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int SplitVec2Node::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 1;
   default:
     return 2;
   }
 }
 
-QString SplitVec2Node::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::Out:
+QString SplitVec2Node::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::Out:
     switch (portIndex) {
     case 0:
       return "x";
@@ -32,9 +32,9 @@ QString SplitVec2Node::portCaption(PortType portType, PortIndex portIndex) const
   }
 }
 
-NodeDataType SplitVec2Node::dataType(PortType portType, PortIndex _portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType SplitVec2Node::dataType(PortSide portSide, PortIndex _portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return Vec2Data().type();
   default:
     return DecimalData().type();

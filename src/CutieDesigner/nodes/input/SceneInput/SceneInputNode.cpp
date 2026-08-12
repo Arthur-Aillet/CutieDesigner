@@ -19,16 +19,16 @@ SceneInputNode::SceneInputNode(QQmlEngine *engine)
   QObject::connect(_frame, SIGNAL(heightChanged()), this, SLOT(sizeChanged()));
 }
 
-unsigned int SceneInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int SceneInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 2;
   default:
     return 0;
   }
 }
 
-QString SceneInputNode::portCaption(PortType portType, PortIndex portIndex) const {
+QString SceneInputNode::portCaption(PortSide portSide, PortIndex portIndex) const {
   switch (portIndex) {
   case 0:
     return "pos";
@@ -37,7 +37,7 @@ QString SceneInputNode::portCaption(PortType portType, PortIndex portIndex) cons
   }
 }
 
-NodeDataType SceneInputNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType SceneInputNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return Vec2Data().type();
 }
 

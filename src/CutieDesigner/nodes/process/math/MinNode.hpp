@@ -13,7 +13,7 @@ class MinNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "min"; }
 
-  bool portCaptionVisible(PortType _portType, PortIndex _portIndex) const override { return true; }
+  bool portCaptionVisible(PortSide _portSide, PortIndex _portIndex) const override { return true; }
 
   QString name() const override { return "Min"; }
 

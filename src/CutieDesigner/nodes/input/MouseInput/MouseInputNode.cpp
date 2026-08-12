@@ -26,18 +26,18 @@ MouseInputNode::MouseInputNode(QQmlEngine *engine)
                    SLOT(mouseMoveEvent(QMouseEvent *)));
 }
 
-unsigned int MouseInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int MouseInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
   default:
     return 0;
   }
 }
 
-QString MouseInputNode::portCaption(PortType portType, PortIndex portIndex) const { return "pos"; }
+QString MouseInputNode::portCaption(PortSide portSide, PortIndex portIndex) const { return "pos"; }
 
-NodeDataType MouseInputNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType MouseInputNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return Vec2Data().type();
 }
 

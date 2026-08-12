@@ -28,11 +28,11 @@ class ImageDisplayNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &p) override;
 
-  QString portCaption(PortType portType, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortType, PortIndex) const override { return true; }
+  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
+  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
 
-  unsigned int nPorts(PortType portType) const override;
-  NodeDataType dataType(PortType portType, PortIndex portIndex) const override;
+  unsigned int nPorts(PortSide portSide) const override;
+  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
   std::shared_ptr<NodeData> outData(PortIndex port) override;
   void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
 

@@ -20,34 +20,34 @@ void TextTyperNode::load(QJsonObject const &json) {
   _eventList.load(json);
 }
 
-QString TextTyperNode::portCaption(PortType portType, PortIndex index) const {
-  switch (portType) {
-  case NodeEditor::PortType::In:
+QString TextTyperNode::portCaption(PortSide portSide, PortIndex index) const {
+  switch (portSide) {
+  case NodeEditor::PortSide::In:
     if (index == 0)
       return QString("Type delay");
     if (index == 1)
       return QString("Speed scale");
-  case NodeEditor::PortType::Out:
+  case NodeEditor::PortSide::Out:
     return QString("Text");
   default:
     return QString();
   }
 }
 
-unsigned int TextTyperNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int TextTyperNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 2;
-  case PortType::Out:
+  case PortSide::Out:
     return 1;
   default:
     return 0;
   }
 }
 
-NodeDataType TextTyperNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType TextTyperNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return DecimalData().type();
   default:
     return TextData().type();

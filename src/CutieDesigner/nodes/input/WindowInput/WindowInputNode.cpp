@@ -12,20 +12,20 @@ WindowInputNode::WindowInputNode(QQmlEngine *engine)
                    SLOT(resizeEvent(QResizeEvent *)));
 }
 
-unsigned int WindowInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int WindowInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
   default:
     return 0;
   }
 }
 
-QString WindowInputNode::portCaption(PortType portType, PortIndex portIndex) const {
+QString WindowInputNode::portCaption(PortSide portSide, PortIndex portIndex) const {
   return "size";
 }
 
-NodeDataType WindowInputNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType WindowInputNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return Vec2Data().type();
 }
 

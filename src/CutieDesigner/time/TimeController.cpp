@@ -1,10 +1,8 @@
 #include "TimeController.hpp"
 
+#include <QStandardPaths>
 #include <QtConcurrentTask>
 #include <optional>
-#include <qimage.h>
-#include <qstandardpaths.h>
-#include <qtypes.h>
 #include <vector>
 
 TimeController::TimeController()

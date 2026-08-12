@@ -11,16 +11,16 @@
 SurfaceDisplayNode::SurfaceDisplayNode(QQmlEngine *engine)
     : NodeDelegateModel(engine), _content() {}
 
-unsigned int SurfaceDisplayNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int SurfaceDisplayNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 1;
   default:
     return 0;
   }
 }
 
-NodeDataType SurfaceDisplayNode::dataType(PortType, PortIndex) const {
+NodeDataType SurfaceDisplayNode::dataType(PortSide, PortIndex) const {
   return SurfaceData().type();
 }
 

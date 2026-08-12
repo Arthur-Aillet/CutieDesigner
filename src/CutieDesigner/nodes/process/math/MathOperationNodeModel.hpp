@@ -17,12 +17,12 @@ class MathOperationNodeModel : public NodeDelegateModel {
 
   public:
   virtual unsigned int nbInputs() const { return 2; };
-  unsigned int nPorts(PortType portType) const override;
+  unsigned int nPorts(PortSide portSide) const override;
 
-  NodeDataType dataType(PortType portType, PortIndex portIndex) const override;
-  virtual bool portCaptionVisible(PortType, PortIndex) const override { return true; }
-  virtual QString portCaption(PortType portType, PortIndex portIndex) const override {
-    if (portType == PortType::Out)
+  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
+  virtual bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  virtual QString portCaption(PortSide portSide, PortIndex portIndex) const override {
+    if (portSide == PortSide::Out)
       return "out";
     if (nbInputs() == 1)
       return "in";

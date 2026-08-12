@@ -18,18 +18,18 @@ class ColorInputNode : public NodeDelegateModel {
   bool captionVisible() const override { return false; }
   QString name() const override { return "Color"; }
 
-  QString portCaption(PortType portType, PortIndex portIndex) const override { return QString(); };
-  bool portCaptionVisible(PortType, PortIndex) const override { return true; }
+  QString portCaption(PortSide portSide, PortIndex portIndex) const override { return QString(); };
+  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;
 
-  unsigned int nPorts(PortType portType) const override;
+  unsigned int nPorts(PortSide portSide) const override;
 
   QJsonObject save() const override;
   void load(QJsonObject const &) override;
 
-  NodeDataType dataType(PortType portType, PortIndex portIndex) const override;
+  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
   std::shared_ptr<NodeData> outData(PortIndex port) override;
   void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override {};
 

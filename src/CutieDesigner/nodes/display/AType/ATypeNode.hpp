@@ -31,8 +31,8 @@ class ATypeNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return QStringLiteral("AType"); }
 
-  unsigned int nPorts(PortType portType) const override;
-  NodeDataType dataType(PortType portType, PortIndex portIndex) const override;
+  unsigned int nPorts(PortSide portSide) const override;
+  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
   std::shared_ptr<NodeData> outData(PortIndex port) override;
   void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
   std::shared_ptr<SurfaceData> createATypeSurfaceData(QQmlEngine *engine);

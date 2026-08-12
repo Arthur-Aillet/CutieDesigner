@@ -12,18 +12,18 @@ FillNode::FillNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
   _defaultGradient.setColorAt(0, "red");
 }
 
-unsigned int FillNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int FillNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 3;
   default:
     return 1;
   };
 }
 
-NodeDataType FillNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType FillNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return GradientData().type();
@@ -73,9 +73,9 @@ void FillNode::setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) {
   }
 }
 
-QString FillNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString FillNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return "gradient";

@@ -16,16 +16,16 @@ QJsonObject GradientInputNode::save() const { return {{"stops", _list->save()["s
 
 void GradientInputNode::load(QJsonObject const &json) { _list->load(json); }
 
-unsigned int GradientInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int GradientInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 0;
   default:
     return 1;
   }
 }
 
-NodeDataType GradientInputNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType GradientInputNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return GradientData().type();
 }
 

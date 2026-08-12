@@ -76,9 +76,9 @@ StackNode::StackNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
 }
 
 void StackNode::addEmptyPort() {
-  emit portsAboutToBeInserted(PortType::In, _surfaceList.portsCount(), _surfaceList.portsCount());
+  emit portsAboutToBeInserted(PortSide::In, _surfaceList.portsCount(), _surfaceList.portsCount());
   _surfaceList.addEmptyPort();
-  emit portsInserted(PortType::In);
+  emit portsInserted(PortSide::In);
 }
 
 QJsonObject StackNode::save() const { return {{"portsCount", _surfaceList.portsCount()}}; }
@@ -99,22 +99,22 @@ void StackNode::removeLastPort() {
   if (_surfaceList.portsCount() <= 1)
     return;
 
-  emit portsAboutToBeDeleted(PortType::In, _surfaceList.portsCount() - 1,
+  emit portsAboutToBeDeleted(PortSide::In, _surfaceList.portsCount() - 1,
                              _surfaceList.portsCount() - 1);
   _surfaceList.removeLastPort();
-  emit portsDeleted(PortType::In);
+  emit portsDeleted(PortSide::In);
 }
 
-unsigned int StackNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int StackNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return _surfaceList.portsCount();
   default:
     return 1;
   }
 }
 
-NodeDataType StackNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType StackNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return SurfaceData().type();
 }
 
@@ -131,9 +131,9 @@ void StackNode::setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) {
   }
 }
 
-QString StackNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString StackNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return QString::number(portIndex);
   default:
     return QString("out");

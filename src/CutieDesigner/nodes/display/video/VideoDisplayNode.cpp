@@ -31,17 +31,17 @@ VideoDisplayNode::VideoDisplayNode(QQmlEngine *engine) : NodeDelegateModel(engin
       Qt::DirectConnection);
 }
 
-unsigned int VideoDisplayNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int VideoDisplayNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 1;
   default:
     return 1;
   }
 }
 
-NodeDataType VideoDisplayNode::dataType(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::In) {
+NodeDataType VideoDisplayNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::In) {
     switch (portIndex) {
     case (0):
       return DecimalData().type();
@@ -69,9 +69,9 @@ void VideoDisplayNode::setInData(std::shared_ptr<NodeData> data, PortIndex portI
   }
 }
 
-QString VideoDisplayNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString VideoDisplayNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return "Playback Rate";
   default:
     return "out";

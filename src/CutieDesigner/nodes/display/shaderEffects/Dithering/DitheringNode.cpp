@@ -19,18 +19,18 @@ void DitheringNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int DitheringNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int DitheringNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 2;
   default:
     return 1;
   }
 }
 
-NodeDataType DitheringNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType DitheringNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     if (portIndex == 0)
       return SurfaceData().type();
     else
@@ -68,9 +68,9 @@ void DitheringNode::setInData(std::shared_ptr<NodeData> data, PortIndex portInde
   }
 }
 
-QString DitheringNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString DitheringNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return QString("in");

@@ -23,17 +23,17 @@ void ImageDisplayNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int ImageDisplayNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int ImageDisplayNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 2;
   default:
     return 1;
   }
 }
 
-NodeDataType ImageDisplayNode::dataType(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::In) {
+NodeDataType ImageDisplayNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::In) {
     return Vec2Data().type();
   } else {
     return SurfaceData().type();
@@ -62,8 +62,8 @@ void ImageDisplayNode::setInData(std::shared_ptr<NodeData> data, PortIndex portI
   }
 }
 
-QString ImageDisplayNode::portCaption(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::In) {
+QString ImageDisplayNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::In) {
     if (portIndex == 0) {
       return "pos";
     } else {

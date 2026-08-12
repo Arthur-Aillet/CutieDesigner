@@ -23,16 +23,16 @@ void ColorInputNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int ColorInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int ColorInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 0;
   default:
     return 1;
   }
 }
 
-NodeDataType ColorInputNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType ColorInputNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return ColorData().type();
 }
 

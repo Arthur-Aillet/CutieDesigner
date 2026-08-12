@@ -18,16 +18,16 @@ void BlendNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int BlendNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int BlendNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 2;
   default:
     return 1;
   }
 }
 
-NodeDataType BlendNode::dataType(PortType _portType, PortIndex _portIndex) const {
+NodeDataType BlendNode::dataType(PortSide _portSide, PortIndex _portIndex) const {
   return SurfaceData().type();
 }
 
@@ -59,9 +59,9 @@ void BlendNode::setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) {
   }
 }
 
-QString BlendNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString BlendNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return QString("a");

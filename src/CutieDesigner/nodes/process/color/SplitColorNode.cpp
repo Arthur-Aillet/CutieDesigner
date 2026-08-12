@@ -42,18 +42,18 @@ void SplitColorNode::currentModeChanged() {
     return;
 
   if (_mode == CutieDesigner::CMYKA) {
-    emit portsAboutToBeDeleted(PortType::Out, 3, 3);
+    emit portsAboutToBeDeleted(PortSide::Out, 3, 3);
     _mode = newMode;
-    emit portsDeleted(PortType::Out);
+    emit portsDeleted(PortSide::Out);
   } else if (newMode == CutieDesigner::CMYKA) {
-    emit portsAboutToBeInserted(PortType::Out, 3, 3);
+    emit portsAboutToBeInserted(PortSide::Out, 3, 3);
     _mode = newMode;
-    emit portsInserted(PortType::Out);
+    emit portsInserted(PortSide::Out);
   } else {
     _mode = newMode;
   }
 
-  emit portsNameChanged(PortType::Out);
+  emit portsNameChanged(PortSide::Out);
   emit dataUpdated(0);
   emit dataUpdated(1);
   emit dataUpdated(2);
@@ -62,9 +62,9 @@ void SplitColorNode::currentModeChanged() {
     emit dataInvalidated(4);
 }
 
-unsigned int SplitColorNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int SplitColorNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     switch (_mode) {
     case ColorMode::CMYKA:
       return 5;
@@ -76,16 +76,16 @@ unsigned int SplitColorNode::nPorts(PortType portType) const {
   }
 }
 
-QString SplitColorNode::portCaption(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::In) {
+QString SplitColorNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::In) {
     return "in";
   }
   return QString(CutieDesigner::getColorModeComponents(_mode)[portIndex]);
 }
 
-NodeDataType SplitColorNode::dataType(PortType portType, PortIndex _portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType SplitColorNode::dataType(PortSide portSide, PortIndex _portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return ColorData().type();
   default:
     return DecimalData().type();

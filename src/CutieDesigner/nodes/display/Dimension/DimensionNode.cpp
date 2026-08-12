@@ -11,18 +11,18 @@ DimensionNode::DimensionNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
                                            QVariantMap{{"node", QVariant::fromValue(this)}});
 }
 
-unsigned int DimensionNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int DimensionNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 4;
   default:
     return 1;
   }
 }
 
-NodeDataType DimensionNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType DimensionNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     if (portIndex == 0)
       return SurfaceData().type();
     if (portIndex == 1 || portIndex == 2)
@@ -83,9 +83,9 @@ void DimensionNode::setInData(std::shared_ptr<NodeData> data, PortIndex portInde
   }
 }
 
-QString DimensionNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString DimensionNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return QString("in");

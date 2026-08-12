@@ -51,9 +51,9 @@ void SliderInputNode::setMax(double max) {
   emit maxChanged();
 }
 
-unsigned int SliderInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int SliderInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
   default:
     return 0;
@@ -68,7 +68,7 @@ QVariantMap SliderInputNode::componentInitialProperties() {
   return QVariantMap{{"node", QVariant::fromValue(this)}};
 }
 
-NodeDataType SliderInputNode::dataType(PortType, PortIndex id) const {
+NodeDataType SliderInputNode::dataType(PortSide, PortIndex id) const {
   return DecimalData().type();
 }
 

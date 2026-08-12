@@ -6,18 +6,18 @@
 CombineVec2Node::CombineVec2Node(QQmlEngine *engine)
     : NodeDelegateModel(engine), _vecData(std::make_shared<Vec2Data>(_vec)) {}
 
-unsigned int CombineVec2Node::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int CombineVec2Node::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 2;
   default:
     return 1;
   }
 }
 
-QString CombineVec2Node::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString CombineVec2Node::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return "x";
@@ -29,9 +29,9 @@ QString CombineVec2Node::portCaption(PortType portType, PortIndex portIndex) con
   }
 }
 
-NodeDataType CombineVec2Node::dataType(PortType portType, PortIndex _portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType CombineVec2Node::dataType(PortSide portSide, PortIndex _portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return DecimalData().type();
   default:
     return Vec2Data().type();

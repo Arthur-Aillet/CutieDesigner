@@ -29,17 +29,17 @@ void MaskNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int MaskNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int MaskNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     return 7;
   default:
     return 1;
   }
 }
 
-NodeDataType MaskNode::dataType(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::In) {
+NodeDataType MaskNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::In) {
     if (portIndex == 2)
       return ColorData().type();
     if (portIndex > 2)
@@ -126,9 +126,9 @@ void MaskNode::setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) {
   }
 }
 
-QString MaskNode::portCaption(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::In:
+QString MaskNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return "image";

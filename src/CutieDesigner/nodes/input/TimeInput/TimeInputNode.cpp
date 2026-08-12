@@ -28,20 +28,20 @@ TimeInputNode::TimeInputNode(QQmlEngine *engine)
   }
 }
 
-unsigned int TimeInputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int TimeInputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 5;
   default:
     return 0;
   }
 }
 
-NodeDataType TimeInputNode::dataType(PortType _portType, PortIndex portIndex) const {
+NodeDataType TimeInputNode::dataType(PortSide _portSide, PortIndex portIndex) const {
   return DecimalData().type();
 }
 
-QString TimeInputNode::portCaption(PortType _portType, PortIndex portIndex) const {
+QString TimeInputNode::portCaption(PortSide _portSide, PortIndex portIndex) const {
   switch (portIndex) {
   case 0:
     return "Frame";

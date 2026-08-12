@@ -23,9 +23,9 @@ void Vec2InputNode::load(QJsonObject const &json) {
   }
 }
 
-unsigned int Vec2InputNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int Vec2InputNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
   default:
     return 0;
@@ -40,7 +40,7 @@ QVariantMap Vec2InputNode::componentInitialProperties() {
   return QVariantMap{{"node", QVariant::fromValue(this)}};
 }
 
-NodeDataType Vec2InputNode::dataType(PortType, PortIndex id) const { return Vec2Data().type(); }
+NodeDataType Vec2InputNode::dataType(PortSide, PortIndex id) const { return Vec2Data().type(); }
 
 std::shared_ptr<NodeData> Vec2InputNode::outData(PortIndex) { return _vecData; }
 

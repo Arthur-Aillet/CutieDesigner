@@ -43,24 +43,24 @@ void CombineColorNode::currentModeChanged() {
     return;
 
   if (_mode == CutieDesigner::CMYKA) {
-    emit portsAboutToBeDeleted(PortType::In, 3, 3);
+    emit portsAboutToBeDeleted(PortSide::In, 3, 3);
     _mode = newMode;
-    emit portsDeleted(PortType::In);
+    emit portsDeleted(PortSide::In);
   } else if (newMode == CutieDesigner::CMYKA) {
-    emit portsAboutToBeInserted(PortType::In, 3, 3);
+    emit portsAboutToBeInserted(PortSide::In, 3, 3);
     _mode = newMode;
-    emit portsInserted(PortType::In);
+    emit portsInserted(PortSide::In);
   } else {
     _mode = newMode;
   }
 
-  emit portsNameChanged(PortType::In);
+  emit portsNameChanged(PortSide::In);
   emit dataUpdated(0);
 }
 
-unsigned int CombineColorNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::In:
+unsigned int CombineColorNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::In:
     switch (_mode) {
     case ColorMode::CMYKA:
       return 5;
@@ -72,16 +72,16 @@ unsigned int CombineColorNode::nPorts(PortType portType) const {
   }
 }
 
-QString CombineColorNode::portCaption(PortType portType, PortIndex portIndex) const {
-  if (portType == PortType::Out) {
+QString CombineColorNode::portCaption(PortSide portSide, PortIndex portIndex) const {
+  if (portSide == PortSide::Out) {
     return "out";
   }
   return QString(CutieDesigner::getColorModeComponents(_mode)[portIndex]);
 }
 
-NodeDataType CombineColorNode::dataType(PortType portType, PortIndex _portIndex) const {
-  switch (portType) {
-  case PortType::In:
+NodeDataType CombineColorNode::dataType(PortSide portSide, PortIndex _portIndex) const {
+  switch (portSide) {
+  case PortSide::In:
     return DecimalData().type();
   default:
     return ColorData().type();

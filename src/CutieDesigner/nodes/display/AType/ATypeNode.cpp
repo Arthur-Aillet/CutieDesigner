@@ -20,22 +20,22 @@ ATypeNode::ATypeNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
   _content = createATypeSurfaceData(engine);
 }
 
-unsigned int ATypeNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case PortType::Out:
+unsigned int ATypeNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case PortSide::Out:
     return 1;
-  case PortType::In:
+  case PortSide::In:
     return 2;
   default:
     return 0;
   }
 }
 
-NodeDataType ATypeNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case PortType::Out:
+NodeDataType ATypeNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case PortSide::Out:
     return _content->type();
-  case PortType::In:
+  case PortSide::In:
     switch (portIndex) {
     case 0:
       return TextData().type();

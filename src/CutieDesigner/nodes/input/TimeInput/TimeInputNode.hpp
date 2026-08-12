@@ -14,12 +14,12 @@ class TimeInputNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Time"; }
 
-  unsigned int nPorts(PortType portType) const override;
-  NodeDataType dataType(PortType portType, PortIndex portIndex) const override;
+  unsigned int nPorts(PortSide portSide) const override;
+  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
   std::shared_ptr<NodeData> outData(PortIndex port) override;
 
-  QString portCaption(PortType _portType, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortType, PortIndex) const override { return true; }
+  QString portCaption(PortSide _portSide, PortIndex portIndex) const override;
+  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
 
   void setInData(std::shared_ptr<NodeData>, PortIndex) override {}
 

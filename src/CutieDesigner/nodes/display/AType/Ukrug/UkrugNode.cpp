@@ -58,18 +58,18 @@ void UkrugNode::load(QJsonObject const &json) {
     _inOutFactor = json["inOutFactor"].toDouble();
 }
 
-unsigned int UkrugNode::nPorts(PortType portType) const {
-  switch (portType) {
-  case NodeEditor::PortType::In:
+unsigned int UkrugNode::nPorts(PortSide portSide) const {
+  switch (portSide) {
+  case NodeEditor::PortSide::In:
     return 2;
   default:
     return 1;
   }
 };
 
-NodeDataType UkrugNode::dataType(PortType portType, PortIndex portIndex) const {
-  switch (portType) {
-  case NodeEditor::PortType::Out:
+NodeDataType UkrugNode::dataType(PortSide portSide, PortIndex portIndex) const {
+  switch (portSide) {
+  case NodeEditor::PortSide::Out:
     return ATypeCharacterData().type();
   default:
     switch (portIndex) {

@@ -11,8 +11,8 @@ class SubtractionNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "sub"; }
 
-  virtual bool portCaptionVisible(PortType portType, PortIndex portIndex) const override {
-    Q_UNUSED(portType);
+  virtual bool portCaptionVisible(PortSide portSide, PortIndex portIndex) const override {
+    Q_UNUSED(portSide);
     Q_UNUSED(portIndex);
     return true;
   }
