@@ -67,7 +67,7 @@ QString ImageDisplayNode::portCaption(PortSide portSide, PortIndex portIndex) co
     if (portIndex == 0) {
       return "pos";
     } else {
-      return "scale";
+      return "size";
     }
   } else {
     return "out";
