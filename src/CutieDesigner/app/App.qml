@@ -15,6 +15,7 @@ CutieWindow {
 
     property alias objectLoader: appLayout.objectLoader
     property alias sceneContent: appLayout.sceneContent
+    property alias dataFlowContext: appLayout.dataFlowContext
     property alias cameraHandler: cameraHandler
 
     property FileManager fileManager

@@ -1,6 +1,6 @@
 #include "CutieWindow.hpp"
+#include "DataFlowContext.hpp"
 #include "DataFlowGraphModel.hpp"
-#include "DataFlowModelInterface.hpp"
 #include "Definitions.hpp"
 #include "Dithering/DitheringNode.hpp"
 #include "MaxNode.hpp"
@@ -49,14 +49,12 @@
 
 #include <QQmlApplicationEngine>
 #include <QQuickItem>
+#include <QVariant>
 #include <QtQml>
 #include <QtWidgets/QApplication>
-#include <memory>
-#include <qquickitem.h>
-#include <qvariant.h>
 
-static std::shared_ptr<NodeDelegateModelRegistry> createRegistery(QQmlEngine &engine) {
-  auto reg = std::make_shared<NodeDelegateModelRegistry>(&engine);
+static NodeDelegateModelRegistry *createRegistery(QQmlEngine &engine) {
+  auto reg = new NodeDelegateModelRegistry(&engine);
 
   // Input
   reg->registerModel<ColorInputNode>("Input");
@@ -108,21 +106,22 @@ int main(int argc, char *argv[]) {
 
   engine.rootContext()->setContextProperty("app", &app);
 
-  std::shared_ptr<DataFlowGraphModel> graph =
-      std::make_shared<DataFlowGraphModel>(createRegistery(engine), &engine);
+  auto reg = createRegistery(engine);
+  const auto graph = new DataFlowGraphModel(reg);
 
   QObject::connect(
       &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
       []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
 
-  DataFlowModelInterface::init(graph.get());
+  const auto context = new DataFlowContext(graph);
 
   StyleCollection::followApplicationPalette(true);
   TimeController::init();
 
   FileManager fileManager(graph);
 
-  engine.setInitialProperties({{"fileManager", QVariant::fromValue(&fileManager)}});
+  engine.setInitialProperties({{"fileManager", QVariant::fromValue(&fileManager)},
+                               {"dataFlowContext", QVariant::fromValue(context)}});
   engine.loadFromModule("CutieDesigner.App", "App");
 
   QObject &window = *engine.rootObjects().first();

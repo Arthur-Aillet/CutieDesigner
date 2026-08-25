@@ -14,6 +14,7 @@ Item {
     property TopBar topBar
     property alias objectLoader: objectLoader
     property alias sceneContent: sceneContent
+    property alias dataFlowContext: view.dataFlowContext
 
     states: [
         State {

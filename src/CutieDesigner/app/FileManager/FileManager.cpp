@@ -7,7 +7,7 @@
 #include <QJsonObject>
 #include <QJsonParseError>
 
-FileManager::FileManager(std::shared_ptr<DataFlowGraphModel> model, QObject *parent)
+FileManager::FileManager(DataFlowGraphModel *model, QObject *parent)
     : QObject(parent), _model(model) {}
 
 bool FileManager::graphEmpty() {

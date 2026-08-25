@@ -6,6 +6,7 @@ import NodeEditor
 Item {
     id: nodeView
 
+    property DataFlowContext dataFlowContext
     property alias graphicsView: graphicsView
 
     Layout.fillWidth: true
@@ -16,6 +17,7 @@ Item {
         height: parent.height - timeline.height
         anchors.left: parent.left
         anchors.right: parent.right
+        dataFlowContext: nodeView.dataFlowContext
     }
 
     Timeline {
