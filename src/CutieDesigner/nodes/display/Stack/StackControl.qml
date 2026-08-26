@@ -8,6 +8,8 @@ FlexboxLayout {
     required property StackNode node
 
     onParentChanged: {
+        if (!parent)
+            return;
         parent.anchors.verticalCenter = undefined;
         parent.anchors.top = parent.parent.top;
     }
