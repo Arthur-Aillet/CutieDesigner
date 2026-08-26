@@ -106,24 +106,24 @@ FlexboxLayout {
                 return val;
             }
 
-            border.color: StyleCollection.node.normalBoundaryColor
-            border.width: StyleCollection.node.penWidth
+            border.color: styleCollection.node.normalBoundaryColor
+            border.width: styleCollection.node.penWidth
             gradient: Gradient {
                 GradientStop {
                     position: 0.0
-                    color: Qt.darker(StyleCollection.node.gradientColor0, 1.1)
+                    color: Qt.darker(styleCollection.node.gradientColor0, 1.1)
                 }
                 GradientStop {
                     position: 0.1
-                    color: Qt.darker(StyleCollection.node.gradientColor1, 1.1)
+                    color: Qt.darker(styleCollection.node.gradientColor1, 1.1)
                 }
                 GradientStop {
                     position: 0.9
-                    color: Qt.darker(StyleCollection.node.gradientColor2, 1.1)
+                    color: Qt.darker(styleCollection.node.gradientColor2, 1.1)
                 }
                 GradientStop {
                     position: 1.0
-                    color: Qt.darker(StyleCollection.node.gradientColor3, 1.1)
+                    color: Qt.darker(styleCollection.node.gradientColor3, 1.1)
                 }
             }
 
@@ -136,7 +136,7 @@ FlexboxLayout {
                 leftPadding: 5
                 anchors.verticalCenter: parent.verticalCenter
                 width: 62
-                color: Qt.lighter(hoverHandler.hovered ? StyleCollection.node.fontColor : StyleCollection.node.fontColorFaded, 1.8)
+                color: Qt.lighter(hoverHandler.hovered ? styleCollection.node.fontColor : styleCollection.node.fontColorFaded, 1.8)
                 text: line.name
             }
 

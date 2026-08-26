@@ -114,8 +114,10 @@ int main(int argc, char *argv[]) {
       []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
 
   const auto context = new DataFlowContext(graph);
+  context->styleCollection()->followApplicationPalette(true);
+  engine.rootContext()->setContextProperty("styleCollection",
+                                           QVariant::fromValue(context->styleCollection()));
 
-  StyleCollection::followApplicationPalette(true);
   TimeController::init();
 
   FileManager fileManager(graph);

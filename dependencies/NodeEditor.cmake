@@ -1,6 +1,6 @@
 FetchContent_Declare(NodeEditor
     GIT_REPOSITORY  https://github.com/Arthur-Aillet/NodeEditor-QML.git
-    GIT_TAG         66957999d27bc74c2f732f87d71573812d07d1ed
+    GIT_TAG         ebf16b33e700d932883526d3069a36b176d311d5
 )
 
 FetchContent_GetProperties(NodeEditor)
