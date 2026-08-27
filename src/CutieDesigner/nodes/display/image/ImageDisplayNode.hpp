@@ -1,15 +1,15 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
+#include <NodeEditor/NodeModel>
 
 #include <QUrl>
 #include <optional>
 
-class ImageDisplayNode : public NodeDelegateModel {
+class ImageDisplayNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
@@ -28,13 +28,19 @@ class ImageDisplayNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &p) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;

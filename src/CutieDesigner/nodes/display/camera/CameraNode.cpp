@@ -2,14 +2,10 @@
 #include "CutieWindow.hpp"
 
 #include <QQmlContext>
-#include <QtWidgets/QLabel>
-#include <qobject.h>
-#include <qqmlcomponent.h>
-#include <qquickitem.h>
-#include <qtimer.h>
-#include <qtmetamacros.h>
 
-CameraNode::CameraNode(QQmlEngine *engine) : NodeDelegateModel(engine), _engine(engine) {
+using namespace NodeEditor;
+
+CameraNode::CameraNode(QQmlEngine *engine) : NodeModel(engine), _engine(engine) {
   CutieWindow *window = CutieWindow::getCutieWindow(engine);
 
   if (!window)

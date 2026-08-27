@@ -1,10 +1,13 @@
 #include "CombineVec2Node.hpp"
 #include "DecimalData.hpp"
-#include "NodeData.hpp"
 #include "Vec2Data.hpp"
 
+#include <NodeEditor/NodeData>
+
+using namespace NodeEditor;
+
 CombineVec2Node::CombineVec2Node(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _vecData(std::make_shared<Vec2Data>(_vec)) {}
+    : NodeModel(engine), _vecData(std::make_shared<Vec2Data>(_vec)) {}
 
 unsigned int CombineVec2Node::nPorts(PortSide portSide) const {
   switch (portSide) {

@@ -1,19 +1,21 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
+
+#include <NodeEditor/NodeModel>
 
 #include <QUrl>
 #include <QVideoSink>
-#include <QtAVPlayer/qavplayer.h>
 #include <QtMultimediaQuick/private/qquickvideooutput_p.h>
-#include <optional>
-#include <qtmetamacros.h>
 
-class VideoDisplayNode : public NodeDelegateModel {
+#include <QtAVPlayer/qavplayer.h>
+
+#include <optional>
+
+class VideoDisplayNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
@@ -27,13 +29,19 @@ class VideoDisplayNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Video"; }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;

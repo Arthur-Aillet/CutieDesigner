@@ -1,14 +1,16 @@
 #pragma once
 
-#include "NodeData.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
-#include <qcolor.h>
 
-class MaskNode : public NodeDelegateModel {
+#include <NodeEditor/NodeData>
+#include <NodeEditor/NodeModel>
+
+#include <QColor>
+
+class MaskNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(SurfaceData *image READ image NOTIFY imageChanged)
@@ -39,13 +41,19 @@ class MaskNode : public NodeDelegateModel {
     return QVariantMap{{"node", QVariant::fromValue(this)}};
   }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   SurfaceData *image() { return _image.lock().get(); }
   SurfaceData *mask() { return _mask.lock().get(); }

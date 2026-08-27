@@ -1,14 +1,12 @@
 #include "NumberInputNode.hpp"
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
 
-#include <QtCore/QJsonValue>
-#include <QtGui/QDoubleValidator>
-#include <QtWidgets/QLineEdit>
-#include <qqmlcomponent.h>
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
 
 NumberInputNode::NumberInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _numberData(std::make_shared<DecimalData>(_number)) {}
+    : NodeModel(engine), _numberData(std::make_shared<DecimalData>(_number)) {}
 
 QJsonObject NumberInputNode::save() const { return QJsonObject({{"number", _number}}); }
 
@@ -47,7 +45,7 @@ void NumberInputNode::onTextEdited() {
 
   if (str == "") {
     _number = 0;
-    Q_EMIT dataUpdated(0);
+    emit dataUpdated(0);
     return;
   }
 
@@ -56,9 +54,9 @@ void NumberInputNode::onTextEdited() {
 
   if (ok) {
     _number = number;
-    Q_EMIT dataUpdated(0);
+    emit dataUpdated(0);
   } else {
-    Q_EMIT dataInvalidated(0);
+    emit dataInvalidated(0);
   }
 }
 

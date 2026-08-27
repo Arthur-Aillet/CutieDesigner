@@ -1,10 +1,12 @@
 #include "Vec2InputNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "Vec2Data.hpp"
-#include <qvariant.h>
+
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
 
 Vec2InputNode::Vec2InputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _vecData(std::make_shared<Vec2Data>(_vec)) {}
+    : NodeModel(engine), _vecData(std::make_shared<Vec2Data>(_vec)) {}
 
 QJsonObject Vec2InputNode::save() const { return QJsonObject({{"x", _x}, {"y", _y}}); }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Serializable.hpp"
+#include <NodeEditor/Serializable>
 
 #include <QQmlEngine>
 

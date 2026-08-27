@@ -1,16 +1,13 @@
 #pragma once
 
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
-#include <qcontainerfwd.h>
-#include <qqmlintegration.h>
-#include <qtmetamacros.h>
-#include <qvariant.h>
 
-class SliderInputNode : public NodeDelegateModel {
+#include <NodeEditor/NodeModel>
+
+class SliderInputNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(double value READ value WRITE setValue NOTIFY valueChanged)
@@ -26,14 +23,21 @@ class SliderInputNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &p) override;
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override { return ""; }
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override {
+    return "";
+  }
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  void setInData(std::shared_ptr<NodeData>, PortIndex) override {}
+  void setInData(std::shared_ptr<NodeEditor::NodeData>, NodeEditor::PortIndex) override {}
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;

@@ -1,23 +1,15 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
+#include <NodeEditor/NodeModel>
 
 #include <QQmlComponent>
 #include <QtCore/QJsonObject>
 #include <QtCore/QObject>
 #include <QtWidgets/QLabel>
-#include <memory>
-#include <qabstractitemmodel.h>
-#include <qcolor.h>
-#include <qlogging.h>
-#include <qobject.h>
-#include <qqmlcomponent.h>
-#include <qqmlengine.h>
-#include <qquickitem.h>
-#include <qsharedpointer.h>
-#include <qtmetamacros.h>
 
-class ATypeCharacterNodeModel : public NodeDelegateModel {
+#include <memory>
+
+class ATypeCharacterNodeModel : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_INTERFACE
 
@@ -34,7 +26,7 @@ class ATypeCharacterNodeModel : public NodeDelegateModel {
 
   virtual QQmlComponent *getComponent() = 0;
   virtual QVariantMap getAdditionalProperties() = 0;
-  ATypeCharacterNodeModel(QQmlEngine *engine) : NodeDelegateModel(engine) {}
+  ATypeCharacterNodeModel(QQmlEngine *engine) : NodeEditor::NodeModel(engine) {}
   ~ATypeCharacterNodeModel() = default;
 
   QJsonObject save() const override;
@@ -63,7 +55,7 @@ class ATypeCharacterNodeModel : public NodeDelegateModel {
   protected:
   QVector<QSharedPointer<QQuickItem>> _characters{};
   QColor _baseColor = "white";
-  std::weak_ptr<NodeData> _baseColorPtr;
+  std::weak_ptr<NodeEditor::NodeData> _baseColorPtr;
   double _fontSize = 150;
   double _animationOpacitySpeed = 250;
   double _animationWidthSpeed = 100;

@@ -1,9 +1,10 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-class SurfaceDisplayNode : public NodeDelegateModel {
+#include <NodeEditor/NodeModel>
+
+class SurfaceDisplayNode : public NodeEditor::NodeModel {
   Q_OBJECT
 
   public:
@@ -16,10 +17,12 @@ class SurfaceDisplayNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return QStringLiteral("Result"); }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   SurfaceData *getContent() { return _content.lock().get(); }
 

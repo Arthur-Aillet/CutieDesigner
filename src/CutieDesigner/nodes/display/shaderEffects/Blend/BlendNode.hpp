@@ -1,12 +1,13 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-class BlendNode : public NodeDelegateModel {
+#include <NodeEditor/NodeModel>
+
+class BlendNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(SurfaceData *a READ getA NOTIFY aChanged)
@@ -23,8 +24,12 @@ class BlendNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &p) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override {
     return QQmlComponent(engine, "CutieDesigner.Nodes.Display", "BlendControl");
@@ -34,10 +39,12 @@ class BlendNode : public NodeDelegateModel {
     return QVariantMap{{"node", QVariant::fromValue(this)}};
   }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   SurfaceData *getA() { return _a.lock().get(); }
   SurfaceData *getB() { return _b.lock().get(); }

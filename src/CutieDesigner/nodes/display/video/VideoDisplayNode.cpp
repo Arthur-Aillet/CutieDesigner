@@ -1,10 +1,12 @@
 #include "VideoDisplayNode.hpp"
 #include "DecimalData.hpp"
-#include "QtAVPlayer/qavplayer.h"
 #include "SurfaceData.hpp"
-#include <qdebug.h>
 
-VideoDisplayNode::VideoDisplayNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+#include <QtAVPlayer/qavplayer.h>
+
+using namespace NodeEditor;
+
+VideoDisplayNode::VideoDisplayNode(QQmlEngine *engine) : NodeModel(engine) {
   _content = std::make_shared<SurfaceData>(
       std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "VideoDisplay"),
       QVariantMap{{"node", QVariant::fromValue(this)}});

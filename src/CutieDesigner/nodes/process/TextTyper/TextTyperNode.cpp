@@ -2,10 +2,11 @@
 #include "DecimalData.hpp"
 #include "TextData.hpp"
 #include "TextTypeEvent.hpp"
-#include <qtmetamacros.h>
+
+using namespace NodeEditor;
 
 TextTyperNode::TextTyperNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _content(std::make_shared<TextData>(_text)), _timer(QTimer()) {};
+    : NodeModel(engine), _content(std::make_shared<TextData>(_text)), _timer(QTimer()) {};
 
 QJsonObject TextTyperNode::save() const {
   return {{"text", _text}, {"eventList", _eventList.save()["eventList"]}};
@@ -22,12 +23,12 @@ void TextTyperNode::load(QJsonObject const &json) {
 
 QString TextTyperNode::portCaption(PortSide portSide, PortIndex index) const {
   switch (portSide) {
-  case NodeEditor::PortSide::In:
+  case PortSide::In:
     if (index == 0)
       return QString("Type delay");
     if (index == 1)
       return QString("Speed scale");
-  case NodeEditor::PortSide::Out:
+  case PortSide::Out:
     return QString("Text");
   default:
     return QString();
@@ -130,8 +131,8 @@ void TextTyperNode::processErase() {
 
   uint pos = std::min((uint)_text.length(), e.pos);
   _text.removeAt(pos);
-  Q_EMIT textChanged();
-  Q_EMIT dataUpdated(0);
+  emit textChanged();
+  emit dataUpdated(0);
 
   e.amount -= 1;
 
@@ -151,8 +152,8 @@ void TextTyperNode::processReplace() {
 
   uint pos = std::min((uint)_text.length(), r.pos);
   _text[pos] = r.text[0];
-  Q_EMIT textChanged();
-  Q_EMIT dataUpdated(0);
+  emit textChanged();
+  emit dataUpdated(0);
 
   r.text.removeFirst();
   r.pos += 1;
@@ -173,8 +174,8 @@ void TextTyperNode::processInsert() {
 
   uint pos = std::min((uint)_text.length(), i.pos);
   _text.insert(pos, i.text[0]);
-  Q_EMIT textChanged();
-  Q_EMIT dataUpdated(0);
+  emit textChanged();
+  emit dataUpdated(0);
 
   i.text.removeFirst();
   i.pos += 1;

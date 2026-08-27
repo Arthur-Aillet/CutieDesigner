@@ -1,10 +1,10 @@
 #include "DecimalData.hpp"
-#include "ColorData.hpp"
-#include "GradientData.hpp"
-#include "NodeData.hpp"
-#include "TextData.hpp"
 
-#include <qvectornd.h>
+#include <NodeEditor/NodeData>
+
+#include <QColor>
+#include <QGradient>
+#include <QVector2D>
 
 DecimalDataType::DecimalDataType()
     : NodeDataType("decimal", "Decimal", {"decimal", "text", "col", "gradient-01", "vec2-01"}) {}

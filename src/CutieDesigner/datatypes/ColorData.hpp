@@ -1,15 +1,15 @@
 #pragma once
 
-#include "GradientData.hpp"
-#include "NodeData.hpp"
+#include <NodeEditor/NodeData>
+
 #include <QtGui/QColor>
 #include <qbrush.h>
 
-struct ColorDataType : public NodeDataType {
-  ColorDataType() : NodeDataType("col", "Color", {"col", "gradient-01"}) {}
+struct ColorDataType : public NodeEditor::NodeDataType {
+  ColorDataType() : NodeEditor::NodeDataType("col", "Color", {"col", "gradient-01"}) {}
 };
 
-class ColorData : public NodeData {
+class ColorData : public NodeEditor::NodeData {
 
   public:
   ColorData() {}
@@ -22,5 +22,5 @@ class ColorData : public NodeData {
     });
   }
 
-  NodeDataType type() const override { return ColorDataType(); }
+  NodeEditor::NodeDataType type() const override { return ColorDataType(); }
 };

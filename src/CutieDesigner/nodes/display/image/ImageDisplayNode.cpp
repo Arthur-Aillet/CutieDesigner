@@ -1,11 +1,10 @@
 #include "ImageDisplayNode.hpp"
-#include "Definitions.hpp"
 #include "SurfaceData.hpp"
 #include "Vec2Data.hpp"
-#include <qdebug.h>
-#include <qvectornd.h>
 
-ImageDisplayNode::ImageDisplayNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+using namespace NodeEditor;
+
+ImageDisplayNode::ImageDisplayNode(QQmlEngine *engine) : NodeModel(engine) {
   _content = std::make_shared<SurfaceData>(
       std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "ImageDisplay"),
       QVariantMap{{"node", QVariant::fromValue(this)}});

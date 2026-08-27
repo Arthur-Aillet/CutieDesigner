@@ -1,11 +1,14 @@
-#include "Dimension/DimensionNode.hpp"
+#include "DimensionNode.hpp"
 #include "DecimalData.hpp"
 #include "DimensionNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 #include "Vec2Data.hpp"
 
-DimensionNode::DimensionNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
+
+DimensionNode::DimensionNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "Dimension");
   _content = std::make_shared<SurfaceData>(std::move(comp),
                                            QVariantMap{{"node", QVariant::fromValue(this)}});

@@ -1,9 +1,12 @@
 #include "ColorInputNode.hpp"
 #include "ColorData.hpp"
+
 #include <memory>
 
+using namespace NodeEditor;
+
 ColorInputNode::ColorInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _content(std::make_shared<ColorData>(_color)) {}
+    : NodeModel(engine), _content(std::make_shared<ColorData>(_color)) {}
 
 QQmlComponent ColorInputNode::embeddedComponent(QQmlEngine *engine) {
   return QQmlComponent(engine, "CutieDesigner.Nodes.Input", "ColorInputControl");

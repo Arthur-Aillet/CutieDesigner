@@ -1,11 +1,12 @@
 #pragma once
 
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
+
+#include <NodeEditor/NodeModel>
 
 #include <memory>
 
-class SplitVec2Node : public NodeDelegateModel {
+class SplitVec2Node : public NodeEditor::NodeModel {
   public:
   SplitVec2Node(QQmlEngine *engine);
   ~SplitVec2Node() = default;
@@ -14,13 +15,18 @@ class SplitVec2Node : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return QStringLiteral("Split Vec2"); }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide, NodeEditor::PortIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   private:
   double _x = 0.0;

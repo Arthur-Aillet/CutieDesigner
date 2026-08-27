@@ -1,15 +1,15 @@
 #pragma once
 
-#include "NodeData.hpp"
+#include <NodeEditor/NodeData>
 
-struct Vec2DataType : public NodeDataType {
+struct Vec2DataType : public NodeEditor::NodeDataType {
   Vec2DataType();
 };
 
-class Vec2Data : public NodeData {
+class Vec2Data : public NodeEditor::NodeData {
   public:
   Vec2Data() {}
   Vec2Data(const QVector2D &v);
 
-  NodeDataType type() const override { return Vec2DataType(); }
+  NodeEditor::NodeDataType type() const override { return Vec2DataType(); }
 };

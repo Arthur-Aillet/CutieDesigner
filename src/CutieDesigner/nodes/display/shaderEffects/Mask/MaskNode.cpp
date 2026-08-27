@@ -1,11 +1,13 @@
 #include "MaskNode.hpp"
 #include "ColorData.hpp"
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
-#include <qcolor.h>
 
-MaskNode::MaskNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
+
+MaskNode::MaskNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "Mask");
   _content = std::make_shared<SurfaceData>(std::move(comp),
                                            QVariantMap{{"node", QVariant::fromValue(this)}});

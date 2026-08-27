@@ -1,5 +1,6 @@
 #include "FileManager.hpp"
-#include "Definitions.hpp"
+
+#include <NodeEditor/DataFlowGraph>
 
 #include <QByteArray>
 #include <QJsonArray>
@@ -7,12 +8,14 @@
 #include <QJsonObject>
 #include <QJsonParseError>
 
-FileManager::FileManager(DataFlowGraphModel *model, QObject *parent)
+FileManager::FileManager(NodeEditor::DataFlowGraph *model, QObject *parent)
     : QObject(parent), _model(model) {}
 
 bool FileManager::graphEmpty() {
   for (auto &nodeId : _model->allNodeIds()) {
-    if (!_model->nodeData(nodeId, NodeRole::Flags).value<NodeFlags>().testFlag(NodeFlag::Locked)) {
+    if (!_model->nodeData(nodeId, NodeEditor::NodeRole::Flags)
+             .value<NodeEditor::NodeFlags>()
+             .testFlag(NodeEditor::NodeFlag::Locked)) {
       return false;
     }
   }
@@ -23,7 +26,8 @@ static void removeStartNode(QJsonObject &json) {
   auto nodes = json["nodes"];
   QJsonArray keptNodes;
   for (const auto &node : nodes.toArray()) {
-    if (!node.toObject()["flags"].toVariant().value<NodeFlags>().testFlag(NodeFlag::Locked)) {
+    if (!node.toObject()["flags"].toVariant().value<NodeEditor::NodeFlags>().testFlag(
+            NodeEditor::NodeFlag::Locked)) {
       keptNodes.append(node);
     }
   }
@@ -63,9 +67,9 @@ QString FileManager::loadGraph(QUrl path, bool overwrite) {
 
   if (overwrite) {
     for (auto &nodeId : _model->allNodeIds()) {
-      if (!_model->nodeData(nodeId, NodeRole::Flags)
-               .value<NodeFlags>()
-               .testFlag(NodeFlag::Locked)) {
+      if (!_model->nodeData(nodeId, NodeEditor::NodeRole::Flags)
+               .value<NodeEditor::NodeFlags>()
+               .testFlag(NodeEditor::NodeFlag::Locked)) {
         _model->deleteNode(nodeId);
       }
     }

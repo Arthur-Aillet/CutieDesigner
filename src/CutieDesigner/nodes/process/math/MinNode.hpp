@@ -13,14 +13,15 @@ class MinNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "min"; }
 
-  bool portCaptionVisible(PortSide _portSide, PortIndex _portIndex) const override { return true; }
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QString name() const override { return "Min"; }
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
@@ -31,6 +32,6 @@ class MinNode : public MathOperationNodeModel {
       _resultPtr.reset();
     }
 
-    Q_EMIT dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

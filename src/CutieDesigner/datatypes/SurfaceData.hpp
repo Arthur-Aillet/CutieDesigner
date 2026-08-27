@@ -1,17 +1,15 @@
 #pragma once
 
-#include "NodeData.hpp"
-#include <memory>
-#include <qobject.h>
-#include <qqmlcomponent.h>
-#include <qqmlintegration.h>
-#include <qquickitem.h>
-#include <qtmetamacros.h>
-#include <qvariant.h>
+#include <NodeEditor/NodeData>
 
-class SurfaceData : public NodeData {
+#include <QQmlComponent>
+#include <QQuickItem>
+
+#include <memory>
+
+class SurfaceData : public NodeEditor::NodeData {
   Q_OBJECT
-  QML_IMPLEMENTS_INTERFACES(NodeData)
+  QML_IMPLEMENTS_INTERFACES(NodeEditor::NodeData)
   QML_ELEMENT
   QML_UNCREATABLE("")
 
@@ -19,7 +17,9 @@ class SurfaceData : public NodeData {
   SurfaceData() {}
   SurfaceData(std::unique_ptr<QQmlComponent> &&object, QVariantMap initialProps = {});
 
-  NodeDataType type() const override { return NodeDataType("object", "2D Surface"); }
+  NodeEditor::NodeDataType type() const override {
+    return NodeEditor::NodeDataType("object", "2D Surface");
+  }
 
   const std::unique_ptr<QQmlComponent> &component() { return _component; };
   const QVariantMap &initialProps() { return _initialProps; };

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Serializable.hpp"
 #include "TextTypeEvent.hpp"
+
+#include <NodeEditor/Serializable>
 
 #include <QAbstractListModel>
 #include <QQmlEngine>

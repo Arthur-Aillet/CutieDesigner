@@ -3,7 +3,9 @@
 #include "SurfaceData.hpp"
 #include "Vec2Data.hpp"
 
-FillNode::FillNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+using namespace NodeEditor;
+
+FillNode::FillNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "FillSurface");
   QVariantMap map;
   map["node"] = QVariant::fromValue(this);

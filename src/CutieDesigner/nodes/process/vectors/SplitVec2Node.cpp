@@ -1,12 +1,16 @@
 #include "SplitVec2Node.hpp"
 #include "DecimalData.hpp"
 #include "Vec2Data.hpp"
+
 #include <memory>
-#include <qcolor.h>
-#include <qvectornd.h>
+
+#include <QColor>
+#include <QVector2D>
+
+using namespace NodeEditor;
 
 SplitVec2Node::SplitVec2Node(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _xData(std::make_shared<DecimalData>(_x)),
+    : NodeModel(engine), _xData(std::make_shared<DecimalData>(_x)),
       _yData(std::make_shared<DecimalData>(_y)) {}
 
 unsigned int SplitVec2Node::nPorts(PortSide portSide) const {

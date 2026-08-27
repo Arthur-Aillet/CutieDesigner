@@ -2,12 +2,16 @@
 #include "ColorData.hpp"
 #include "ColorModes.hpp"
 #include "DecimalData.hpp"
-#include "vivid/color.h"
-#include "vivid/types.h"
+
+#include <vivid/color.h>
+#include <vivid/types.h>
+
 #include <memory>
 
+using namespace NodeEditor;
+
 SplitColorNode::SplitColorNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _outValues{0, 0, 0, 0, 0},
+    : NodeModel(engine), _outValues{0, 0, 0, 0, 0},
       _outData{std::make_shared<DecimalData>(_outValues[0]),
                std::make_shared<DecimalData>(_outValues[1]),
                std::make_shared<DecimalData>(_outValues[2]),

@@ -11,9 +11,8 @@ class SubtractionNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "sub"; }
 
-  virtual bool portCaptionVisible(PortSide portSide, PortIndex portIndex) const override {
-    Q_UNUSED(portSide);
-    Q_UNUSED(portIndex);
+  virtual bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                                  NodeEditor::PortIndex _portIndex) const override {
     return true;
   }
 
@@ -21,8 +20,6 @@ class SubtractionNode : public MathOperationNodeModel {
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
@@ -33,6 +30,6 @@ class SubtractionNode : public MathOperationNodeModel {
       _resultPtr.reset();
     }
 
-    Q_EMIT dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

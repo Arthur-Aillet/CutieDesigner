@@ -1,8 +1,11 @@
 #include "MouseInputNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "Vec2Data.hpp"
 
+#include <NodeEditor/NodeModel>
+
 #include <QQmlContext>
+
+using namespace NodeEditor;
 
 static CutieWindow *getCutieWindow(QApplication *application) {
   for (auto w : application->allWindows()) {
@@ -14,7 +17,7 @@ static CutieWindow *getCutieWindow(QApplication *application) {
 }
 
 MouseInputNode::MouseInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _posData(std::make_shared<Vec2Data>(_pos)) {
+    : NodeModel(engine), _posData(std::make_shared<Vec2Data>(_pos)) {
   auto app = qvariant_cast<QApplication *>(engine->rootContext()->contextProperty("app"));
 
   _window = getCutieWindow(app);

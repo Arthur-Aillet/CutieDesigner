@@ -1,15 +1,15 @@
 #pragma once
 
-#include "NodeData.hpp"
+#include <NodeEditor/NodeData>
 
-struct DecimalDataType : public NodeDataType {
+struct DecimalDataType : public NodeEditor::NodeDataType {
   DecimalDataType();
 };
 
-class DecimalData : public NodeData {
+class DecimalData : public NodeEditor::NodeData {
   public:
   DecimalData() {}
   DecimalData(const double &v);
 
-  NodeDataType type() const override { return DecimalDataType(); }
+  NodeEditor::NodeDataType type() const override { return DecimalDataType(); }
 };

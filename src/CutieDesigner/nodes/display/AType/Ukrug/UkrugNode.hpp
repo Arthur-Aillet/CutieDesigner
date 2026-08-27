@@ -13,7 +13,7 @@ class UkrugNode : public ATypeCharacterNodeModel {
   Q_OBJECT
   QML_IMPLEMENTS_INTERFACES(ATypeCharacterNodeModel)
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(QColor innerColor MEMBER _innerColor NOTIFY innerColorChanged)
@@ -36,15 +36,20 @@ class UkrugNode : public ATypeCharacterNodeModel {
   QString caption() const override { return QStringLiteral("Ukrug Character"); }
   bool captionVisible() const override { return true; }
   QString name() const override { return QStringLiteral("Ukrug Character"); }
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QJsonObject save() const override;
   void load(QJsonObject const &) override;
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override {
     return QQmlComponent(engine, "CutieDesigner.Nodes.Display", "UkrugControl");
@@ -75,7 +80,7 @@ class UkrugNode : public ATypeCharacterNodeModel {
 
   private:
   QColor _innerColor = "white";
-  std::weak_ptr<NodeData> _innerColorPtr;
+  std::weak_ptr<NodeEditor::NodeData> _innerColorPtr;
   double _k = 0.02;
   double _circleScale = 1.0;
   double _pointsScale = 0.22;

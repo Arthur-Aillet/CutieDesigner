@@ -1,16 +1,17 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-#include <QQmlComponent>
-#include <QtCore/QObject>
-#include <qvectornd.h>
+#include <NodeEditor/NodeModel>
 
-class DimensionNode : public NodeDelegateModel {
+#include <QQmlComponent>
+#include <QVector2D>
+#include <QtCore/QObject>
+
+class DimensionNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(SurfaceData *surface READ getSurface NOTIFY surfaceChanged)
@@ -25,13 +26,19 @@ class DimensionNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Dimension"; }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   SurfaceData *getSurface() { return _surface.lock().get(); }
   QVector2D inPos() {
@@ -58,8 +65,8 @@ class DimensionNode : public NodeDelegateModel {
 
   private:
   std::weak_ptr<SurfaceData> _surface;
-  std::weak_ptr<NodeData> _inPos;
-  std::weak_ptr<NodeData> _inSize;
-  std::weak_ptr<NodeData> _rotation;
+  std::weak_ptr<NodeEditor::NodeData> _inPos;
+  std::weak_ptr<NodeEditor::NodeData> _inSize;
+  std::weak_ptr<NodeEditor::NodeData> _rotation;
   std::shared_ptr<SurfaceData> _content;
 };

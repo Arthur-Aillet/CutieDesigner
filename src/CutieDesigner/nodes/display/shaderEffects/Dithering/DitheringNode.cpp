@@ -1,9 +1,12 @@
 #include "DitheringNode.hpp"
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-DitheringNode::DitheringNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
+
+DitheringNode::DitheringNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "Dithering");
   _content = std::make_shared<SurfaceData>(std::move(comp),
                                            QVariantMap{{"node", QVariant::fromValue(this)}});

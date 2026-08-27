@@ -14,8 +14,6 @@ class AdditionNode : public MathOperationNodeModel {
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
@@ -26,6 +24,6 @@ class AdditionNode : public MathOperationNodeModel {
       _resultPtr.reset();
     }
 
-    emit dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

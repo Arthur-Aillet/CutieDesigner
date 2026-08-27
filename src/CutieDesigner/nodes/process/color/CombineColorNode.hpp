@@ -2,12 +2,14 @@
 
 #include "ColorData.hpp"
 #include "ColorModes.hpp"
-#include "NodeDelegateModel.hpp"
+
+#include <NodeEditor/NodeModel>
+
 #include <array>
 
 using namespace CutieDesigner;
 
-class CombineColorNode : public NodeDelegateModel {
+class CombineColorNode : public NodeEditor::NodeModel {
   Q_OBJECT
 
   public:
@@ -20,13 +22,18 @@ class CombineColorNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide, NodeEditor::PortIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
 
@@ -35,7 +42,7 @@ class CombineColorNode : public NodeDelegateModel {
   void embeddedComponentLoaded(std::shared_ptr<QQuickItem> instance) override;
 
   private:
-  std::array<std::weak_ptr<NodeData>, 5> _input;
+  std::array<std::weak_ptr<NodeEditor::NodeData>, 5> _input;
   std::weak_ptr<QQuickItem> _embedded;
   QColor _color = "black";
   ColorMode _mode = ColorMode::RGBA;

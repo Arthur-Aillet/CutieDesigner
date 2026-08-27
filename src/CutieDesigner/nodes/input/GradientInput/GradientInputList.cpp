@@ -1,6 +1,7 @@
 #include "GradientInputList.hpp"
-#include <qjsonvalue.h>
-#include <qvariant.h>
+
+#include <QJsonValue>
+#include <QVariant>
 
 QJsonObject GradientInputList::save() const {
   QJsonArray stops;

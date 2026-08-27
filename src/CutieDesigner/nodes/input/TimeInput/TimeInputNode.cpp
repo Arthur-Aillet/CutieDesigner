@@ -2,8 +2,10 @@
 #include "DecimalData.hpp"
 #include "TimeController.hpp"
 
+using namespace NodeEditor;
+
 TimeInputNode::TimeInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _outContent{0, 0, 0, 0, 0},
+    : NodeModel(engine), _outContent{0, 0, 0, 0, 0},
       _outData{std::make_shared<DecimalData>(_outContent[0]),
                std::make_shared<DecimalData>(_outContent[1]),
                std::make_shared<DecimalData>(_outContent[2]),

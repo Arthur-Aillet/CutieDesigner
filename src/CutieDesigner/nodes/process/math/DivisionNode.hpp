@@ -13,25 +13,26 @@ class DivisionNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "div"; }
 
-  bool portCaptionVisible(PortSide _portSide, PortIndex _portIndex) const override { return true; }
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QString name() const override { return "Division"; }
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
-    NodeValidationState state;
+    NodeEditor::NodeValidationState state;
     if (n2 && (n2->repr<double>() == 0.0)) {
-      state._state = NodeValidationState::State::Error;
+      state._state = NodeEditor::NodeValidationState::State::Error;
       state._stateMessage = QStringLiteral("Division by zero error");
       setValidationState(state);
       _resultPtr.reset();
     } else if (n2 && (n2->repr<double>() < 1e-5)) {
-      state._state = NodeValidationState::State::Warning;
+      state._state = NodeEditor::NodeValidationState::State::Warning;
       state._stateMessage = QStringLiteral("Very small divident. Result might overflow");
       setValidationState(state);
       if (n1) {
@@ -45,11 +46,11 @@ class DivisionNode : public MathOperationNodeModel {
       _result = n1->repr<double>() / n2->repr<double>();
       _resultPtr = std::make_shared<DecimalData>(_result);
     } else {
-      NodeValidationState state;
+      NodeEditor::NodeValidationState state;
       setValidationState(state);
       _resultPtr.reset();
     }
 
-    Q_EMIT dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

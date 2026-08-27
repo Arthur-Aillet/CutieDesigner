@@ -1,9 +1,12 @@
 #include "SliderInputNode.hpp"
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
+
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
 
 SliderInputNode::SliderInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _valueData(std::make_shared<DecimalData>(_value)) {}
+    : NodeModel(engine), _valueData(std::make_shared<DecimalData>(_value)) {}
 
 QJsonObject SliderInputNode::save() const {
   return QJsonObject({{"value", _value}, {"min", _min}, {"max", _max}});

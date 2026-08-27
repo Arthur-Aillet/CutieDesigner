@@ -1,10 +1,12 @@
 #pragma once
 
 #include "DecimalData.hpp"
-#include "NodeDelegateModel.hpp"
+
+#include <NodeEditor/NodeModel>
+
 #include <memory>
 
-class TimeInputNode : public NodeDelegateModel {
+class TimeInputNode : public NodeEditor::NodeModel {
   Q_OBJECT
 
   public:
@@ -14,14 +16,19 @@ class TimeInputNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Time"; }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
 
-  QString portCaption(PortSide _portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide _portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  void setInData(std::shared_ptr<NodeData>, PortIndex) override {}
+  void setInData(std::shared_ptr<NodeEditor::NodeData>, NodeEditor::PortIndex) override {}
 
   protected:
   std::array<double, 5> _outContent;

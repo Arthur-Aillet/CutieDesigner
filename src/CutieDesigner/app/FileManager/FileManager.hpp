@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DataFlowGraphModel.hpp"
+#include <NodeEditor/DataFlowGraph>
 
 #include <QMetaMethod>
 #include <QMetaObject>
@@ -13,12 +13,12 @@ class FileManager : public QObject {
   QML_UNCREATABLE("C++ managed")
 
   public:
-  FileManager(DataFlowGraphModel *model, QObject *parent = nullptr);
+  FileManager(NodeEditor::DataFlowGraph *model, QObject *parent = nullptr);
 
   Q_INVOKABLE bool graphEmpty();
   Q_INVOKABLE QString saveGraph(QUrl path);
   Q_INVOKABLE QString loadGraph(QUrl path, bool overwrite);
 
   private:
-  DataFlowGraphModel *_model;
+  NodeEditor::DataFlowGraph *_model;
 };

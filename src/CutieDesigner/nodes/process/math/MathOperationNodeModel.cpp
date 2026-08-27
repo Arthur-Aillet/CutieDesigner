@@ -1,6 +1,8 @@
 #include "MathOperationNodeModel.hpp"
 #include "DecimalData.hpp"
 
+using namespace NodeEditor;
+
 unsigned int MathOperationNodeModel::nPorts(PortSide portSide) const {
   if (portSide == PortSide::In)
     return nbInputs();

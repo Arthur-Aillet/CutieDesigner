@@ -1,16 +1,16 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
+#include <NodeEditor/NodeModel>
 
 #include <QGradient>
 #include <qdebug.h>
 #include <qvectornd.h>
 
-class FillNode : public NodeDelegateModel {
+class FillNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(QList<QVariant> gradient READ gradient NOTIFY gradientChanged)
@@ -25,13 +25,19 @@ class FillNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Fill"; }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
 
   QList<QVariant> gradient();
   QVector2D start() {
@@ -57,8 +63,8 @@ class FillNode : public NodeDelegateModel {
 
   private:
   QGradient _defaultGradient;
-  std::weak_ptr<NodeData> _gradient;
-  std::weak_ptr<NodeData> _start;
-  std::weak_ptr<NodeData> _end;
+  std::weak_ptr<NodeEditor::NodeData> _gradient;
+  std::weak_ptr<NodeEditor::NodeData> _start;
+  std::weak_ptr<NodeEditor::NodeData> _end;
   std::shared_ptr<SurfaceData> _content;
 };

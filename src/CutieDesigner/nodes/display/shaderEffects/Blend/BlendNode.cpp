@@ -1,8 +1,11 @@
 #include "BlendNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-BlendNode::BlendNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
+
+BlendNode::BlendNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "Blend");
   _content = std::make_shared<SurfaceData>(std::move(comp),
                                            QVariantMap{{"node", QVariant::fromValue(this)}});

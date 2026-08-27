@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Serializable.hpp"
-
+#include <QAbstractListModel>
+#include <QBrush>
 #include <QtQmlIntegration>
-#include <qabstractitemmodel.h>
-#include <qbrush.h>
+
+#include <NodeEditor/Serializable>
 
 class GradientInputList : public QAbstractListModel, public Serializable {
   Q_OBJECT

@@ -1,8 +1,10 @@
 #include "SceneInputNode.hpp"
 #include "CutieWindow.hpp"
 
+using namespace NodeEditor;
+
 SceneInputNode::SceneInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _posData(std::make_shared<Vec2Data>(_pos)),
+    : NodeModel(engine), _posData(std::make_shared<Vec2Data>(_pos)),
       _sizeData(std::make_shared<Vec2Data>(_size)) {
   auto window = CutieWindow::getCutieWindow(engine);
   if (window == nullptr)

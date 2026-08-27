@@ -1,19 +1,11 @@
 #pragma once
 
 #include "CutieWindow.hpp"
-#include "NodeDelegateModel.hpp"
 #include "Vec2Data.hpp"
 
-#include <QQuickItem>
-#include <QtCore/QObject>
-#include <qforeach.h>
-#include <qobject.h>
-#include <qqmlengine.h>
-#include <qtmetamacros.h>
-#include <qvariant.h>
-#include <qvectornd.h>
+#include <NodeEditor/NodeModel>
 
-class MouseInputNode : public NodeDelegateModel {
+class MouseInputNode : public NodeEditor::NodeModel {
   Q_OBJECT
 
   public:
@@ -27,14 +19,19 @@ class MouseInputNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Mouse"; }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override;
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
-  void setInData(std::shared_ptr<NodeData>, PortIndex) override {}
+  void setInData(std::shared_ptr<NodeEditor::NodeData>, NodeEditor::PortIndex) override {}
 
   public slots:
   void mouseMoveEvent(QMouseEvent *event);

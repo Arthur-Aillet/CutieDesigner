@@ -3,12 +3,9 @@
 #include "SurfaceData.hpp"
 #include "TextData.hpp"
 
-#include <QtWidgets/QLabel>
 #include <memory>
-#include <qqmlcomponent.h>
-#include <qtimer.h>
-#include <qtmetamacros.h>
-#include <qvariant.h>
+
+using namespace NodeEditor;
 
 std::shared_ptr<SurfaceData> ATypeNode::createATypeSurfaceData(QQmlEngine *engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "AType");
@@ -16,7 +13,7 @@ std::shared_ptr<SurfaceData> ATypeNode::createATypeSurfaceData(QQmlEngine *engin
                                        QVariantMap{{"node", QVariant::fromValue(this)}});
 }
 
-ATypeNode::ATypeNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+ATypeNode::ATypeNode(QQmlEngine *engine) : NodeModel(engine) {
   _content = createATypeSurfaceData(engine);
 }
 

@@ -1,14 +1,17 @@
 #pragma once
 
 #include "ATypeCharacterNodeModel.hpp"
-#include "NodeData.hpp"
 
-class ATypeCharacterData : public NodeData {
+#include <NodeEditor/NodeData>
+
+class ATypeCharacterData : public NodeEditor::NodeData {
   public:
   ATypeCharacterData() {}
   ATypeCharacterData(ATypeCharacterNodeModel *character) : _character(character) {}
 
-  NodeDataType type() const override { return NodeDataType("atypeCharacter", "Atype Character"); }
+  NodeEditor::NodeDataType type() const override {
+    return NodeEditor::NodeDataType("atypeCharacter", "Atype Character");
+  }
 
   ATypeCharacterNodeModel *getCharacter() { return _character; }
 

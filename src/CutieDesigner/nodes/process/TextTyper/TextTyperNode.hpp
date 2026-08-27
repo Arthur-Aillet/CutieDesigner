@@ -1,18 +1,20 @@
 #pragma once
 
-#include "NodeDelegateModel.hpp"
 #include "TextData.hpp"
 #include "TextTyperEventList.hpp"
+
+#include <NodeEditor/NodeModel>
+
 #include <QTimer>
 #include <qnamespace.h>
 #include <qqmlengine.h>
 #include <qtmetamacros.h>
 #include <qvariant.h>
 
-class TextTyperNode : public NodeDelegateModel {
+class TextTyperNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(bool play READ getPlay WRITE setPlay NOTIFY playChanged)
@@ -28,13 +30,17 @@ class TextTyperNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &) override;
 
-  QString portCaption(PortSide type, PortIndex index) const override;
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide type, NodeEditor::PortIndex index) const override;
+  bool portCaptionVisible(NodeEditor::PortSide, NodeEditor::PortIndex) const override {
+    return true;
+  }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;
 

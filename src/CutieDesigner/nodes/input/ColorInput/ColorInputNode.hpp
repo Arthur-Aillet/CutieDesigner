@@ -1,12 +1,12 @@
 #pragma once
 
 #include "ColorData.hpp"
-#include "NodeDelegateModel.hpp"
+#include <NodeEditor/NodeModel>
 
-class ColorInputNode : public NodeDelegateModel {
+class ColorInputNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
@@ -18,20 +18,27 @@ class ColorInputNode : public NodeDelegateModel {
   bool captionVisible() const override { return false; }
   QString name() const override { return "Color"; }
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override { return QString(); };
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override {
+    return QString();
+  };
+  bool portCaptionVisible(NodeEditor::PortSide, NodeEditor::PortIndex) const override {
+    return true;
+  }
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override;
   QVariantMap componentInitialProperties() override;
 
-  unsigned int nPorts(PortSide portSide) const override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
 
   QJsonObject save() const override;
   void load(QJsonObject const &) override;
 
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override {};
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override {};
 
   QColor color() { return _color; }
 

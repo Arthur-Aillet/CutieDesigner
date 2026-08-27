@@ -3,17 +3,16 @@
 #include "ColorModes.hpp"
 #include "CombineColorNode.hpp"
 #include "DecimalData.hpp"
-#include "Definitions.hpp"
-#include "NodeData.hpp"
-#include "vivid/color.h"
-#include "vivid/types.h"
-#include <qcolor.h>
-#include <qlogging.h>
-#include <qmetaobject.h>
-#include <qobject.h>
+
+#include <vivid/color.h>
+#include <vivid/types.h>
+
+#include <NodeEditor/NodeData>
+
+using namespace NodeEditor;
 
 CombineColorNode::CombineColorNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _outColorPtr(std::make_shared<ColorData>(_color)) {}
+    : NodeModel(engine), _outColorPtr(std::make_shared<ColorData>(_color)) {}
 
 QQmlComponent CombineColorNode::embeddedComponent(QQmlEngine *engine) {
   return QQmlComponent(engine, "CutieDesigner.Nodes.Process", "ColorModeControl");

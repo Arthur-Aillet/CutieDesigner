@@ -17,8 +17,6 @@ class MultiplicationNode : public MathOperationNodeModel {
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
@@ -33,6 +31,6 @@ class MultiplicationNode : public MathOperationNodeModel {
       _resultPtr.reset();
     }
 
-    Q_EMIT dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

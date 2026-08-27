@@ -1,15 +1,15 @@
 #include "SurfaceDisplayNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
-#include <QtWidgets/QLabel>
-#include <memory>
-#include <qqmlcomponent.h>
-#include <qtimer.h>
-#include <qtmetamacros.h>
+#include <NodeEditor/NodeModel>
 
-SurfaceDisplayNode::SurfaceDisplayNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _content() {}
+#include <QtWidgets/QLabel>
+
+#include <memory>
+
+using namespace NodeEditor;
+
+SurfaceDisplayNode::SurfaceDisplayNode(QQmlEngine *engine) : NodeModel(engine), _content() {}
 
 unsigned int SurfaceDisplayNode::nPorts(PortSide portSide) const {
   switch (portSide) {

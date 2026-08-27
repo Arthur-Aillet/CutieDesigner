@@ -1,11 +1,12 @@
 #include "StackNode.hpp"
 #include "SurfaceData.hpp"
 
+#include <QVariant>
 #include <QtWidgets/QLabel>
+
 #include <memory>
-#include <qqmlcomponent.h>
-#include <qtimer.h>
-#include <qtmetamacros.h>
+
+using namespace NodeEditor;
 
 int SurfaceList::rowCount(const QModelIndex &parent) const {
   int i = 0;
@@ -69,7 +70,7 @@ void SurfaceList::removeLastPort() {
   return;
 }
 
-StackNode::StackNode(QQmlEngine *engine) : NodeDelegateModel(engine) {
+StackNode::StackNode(QQmlEngine *engine) : NodeModel(engine) {
   auto comp = std::make_unique<QQmlComponent>(engine, "CutieDesigner.Nodes.Display", "Stack");
   _content = std::make_shared<SurfaceData>(std::move(comp),
                                            QVariantMap{{"node", QVariant::fromValue(this)}});

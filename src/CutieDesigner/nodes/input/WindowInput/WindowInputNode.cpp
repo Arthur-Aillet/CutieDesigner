@@ -1,7 +1,9 @@
 #include "WindowInputNode.hpp"
 
+using namespace NodeEditor;
+
 WindowInputNode::WindowInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _sizeData(std::make_shared<Vec2Data>(_size)) {
+    : NodeModel(engine), _sizeData(std::make_shared<Vec2Data>(_size)) {
   _window = CutieWindow::getCutieWindow(engine);
   if (_window == nullptr)
     return;

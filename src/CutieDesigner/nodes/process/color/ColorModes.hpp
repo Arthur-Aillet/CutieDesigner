@@ -1,8 +1,6 @@
 #pragma once
 
-#include <qmetaobject.h>
-#include <qqmlintegration.h>
-#include <qtmetamacros.h>
+#include <QtQmlIntegration>
 
 namespace CutieDesigner {
 Q_NAMESPACE

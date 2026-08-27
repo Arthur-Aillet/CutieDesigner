@@ -1,12 +1,8 @@
 #include "CutieWindow.hpp"
-#include "DataFlowContext.hpp"
-#include "DataFlowGraphModel.hpp"
-#include "Definitions.hpp"
-#include "Dithering/DitheringNode.hpp"
+#include "DitheringNode.hpp"
 #include "MaxNode.hpp"
 #include "MinNode.hpp"
 #include "ModNode.hpp"
-#include "StyleCollection.hpp"
 #include "TimeController.hpp"
 
 #include "ColorInputNode.hpp"
@@ -53,8 +49,13 @@
 #include <QtQml>
 #include <QtWidgets/QApplication>
 
-static NodeDelegateModelRegistry *createRegistery(QQmlEngine &engine) {
-  auto reg = new NodeDelegateModelRegistry(&engine);
+#include <NodeEditor/DataFlowContext>
+#include <NodeEditor/DataFlowGraph>
+#include <NodeEditor/NodeModelRegistry>
+#include <NodeEditor/StyleCollection>
+
+static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
+  auto reg = new NodeEditor::NodeModelRegistry(&engine);
 
   // Input
   reg->registerModel<ColorInputNode>("Input");
@@ -107,13 +108,13 @@ int main(int argc, char *argv[]) {
   engine.rootContext()->setContextProperty("app", &app);
 
   auto reg = createRegistery(engine);
-  const auto graph = new DataFlowGraphModel(reg);
+  const auto graph = new NodeEditor::DataFlowGraph(reg);
 
   QObject::connect(
       &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
       []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
 
-  const auto context = new DataFlowContext(graph);
+  auto context = new NodeEditor::DataFlowContext(graph);
   context->styleCollection()->followApplicationPalette(true);
   engine.rootContext()->setContextProperty("styleCollection",
                                            QVariant::fromValue(context->styleCollection()));
@@ -130,9 +131,10 @@ int main(int argc, char *argv[]) {
   TimeController::linkCutieWindow(CutieWindow::getCutieWindow(&engine));
 
   auto source = graph->addNode(SurfaceDisplayNode(&engine).name());
-  graph->setNodeData(source, NodeRole::Position, QPointF(750, 225));
-  graph->setNodeData(source, NodeRole::Flags, NodeFlags({NodeFlag::Locked}).toInt());
-  auto display = graph->delegateModel<SurfaceDisplayNode>(source);
+  graph->setNodeData(source, NodeEditor::NodeRole::Position, QPointF(750, 225));
+  graph->setNodeData(source, NodeEditor::NodeRole::Flags,
+                     NodeEditor::NodeFlags({NodeEditor::NodeFlag::Locked}).toInt());
+  auto display = graph->model<SurfaceDisplayNode>(source);
 
   engine.rootContext()->setContextProperty("cameraHandler",
                                            window.property("cameraHandler").value<QQuickItem *>());

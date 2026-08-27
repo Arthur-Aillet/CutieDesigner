@@ -1,9 +1,12 @@
 #include "TextInputNode.hpp"
-#include "NodeDelegateModel.hpp"
 #include "TextData.hpp"
 
+#include <NodeEditor/NodeModel>
+
+using namespace NodeEditor;
+
 TextInputNode::TextInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _textData(std::make_shared<TextData>(_text)) {}
+    : NodeModel(engine), _textData(std::make_shared<TextData>(_text)) {}
 
 QJsonObject TextInputNode::save() const { return QJsonObject({{"text", _text}}); }
 

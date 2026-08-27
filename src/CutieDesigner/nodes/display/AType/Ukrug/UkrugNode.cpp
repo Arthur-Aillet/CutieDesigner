@@ -4,8 +4,10 @@
 #include "DecimalData.hpp"
 
 #include <QJsonObject>
-#include <qjsonvalue.h>
-#include <qvariant.h>
+#include <QJsonValue>
+#include <QVariant>
+
+using namespace NodeEditor;
 
 UkrugNode::UkrugNode(QQmlEngine *engine)
     : ATypeCharacterNodeModel(engine), _modelData(std::make_shared<ATypeCharacterData>(this)),
@@ -60,7 +62,7 @@ void UkrugNode::load(QJsonObject const &json) {
 
 unsigned int UkrugNode::nPorts(PortSide portSide) const {
   switch (portSide) {
-  case NodeEditor::PortSide::In:
+  case PortSide::In:
     return 2;
   default:
     return 1;
@@ -69,7 +71,7 @@ unsigned int UkrugNode::nPorts(PortSide portSide) const {
 
 NodeDataType UkrugNode::dataType(PortSide portSide, PortIndex portIndex) const {
   switch (portSide) {
-  case NodeEditor::PortSide::Out:
+  case PortSide::Out:
     return ATypeCharacterData().type();
   default:
     switch (portIndex) {

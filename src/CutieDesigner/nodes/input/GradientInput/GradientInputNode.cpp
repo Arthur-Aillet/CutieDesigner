@@ -1,11 +1,13 @@
 #include "GradientInputNode.hpp"
 #include "GradientData.hpp"
 #include "GradientInputList.hpp"
+
 #include <memory>
-#include <qobject.h>
+
+using namespace NodeEditor;
 
 GradientInputNode::GradientInputNode(QQmlEngine *engine)
-    : NodeDelegateModel(engine), _list(std::make_shared<GradientInputList>()),
+    : NodeModel(engine), _list(std::make_shared<GradientInputList>()),
       _content(std::make_shared<GradientData>(_list->gradient)) {
   QObject::connect(
       _list.get(), &GradientInputList::gradientChanged, this, [this]() { emit dataUpdated(0); },

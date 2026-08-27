@@ -13,20 +13,21 @@ class ModNode : public MathOperationNodeModel {
   public:
   QString caption() const override { return "mod"; }
 
-  bool portCaptionVisible(PortSide _portSide, PortIndex _portIndex) const override { return true; }
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QString name() const override { return "Mod"; }
 
   private:
   void compute() override {
-    PortIndex const outPortIndex = 0;
-
     auto n1 = _inputNumbers[0].lock();
     auto n2 = _inputNumbers[1].lock();
 
-    NodeValidationState state;
+    NodeEditor::NodeValidationState state;
     if (n2 && (n2->repr<double>() == 0.0)) {
-      state._state = NodeValidationState::State::Error;
+      state._state = NodeEditor::NodeValidationState::State::Error;
       state._stateMessage = QStringLiteral("Mod by zero error");
       setValidationState(state);
       _resultPtr.reset();
@@ -35,11 +36,11 @@ class ModNode : public MathOperationNodeModel {
       _result = std::fmod(n1->repr<double>(), n2->repr<double>());
       _resultPtr = std::make_shared<DecimalData>(_result);
     } else {
-      NodeValidationState state;
+      NodeEditor::NodeValidationState state;
       setValidationState(state);
       _resultPtr.reset();
     }
 
-    Q_EMIT dataUpdated(outPortIndex);
+    emit dataUpdated(0);
   }
 };

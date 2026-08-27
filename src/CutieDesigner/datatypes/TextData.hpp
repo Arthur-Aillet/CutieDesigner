@@ -1,13 +1,15 @@
 #pragma once
 
-#include "NodeData.hpp"
+#include <NodeEditor/NodeData>
 
-class TextData : public NodeData {
+class TextData : public NodeEditor::NodeData {
   public:
   TextData() {}
   TextData(const QString &text) {
     registerConvert([&text]() { return text; });
   }
 
-  NodeDataType type() const override { return NodeDataType("text", "Text"); }
+  NodeEditor::NodeDataType type() const override {
+    return NodeEditor::NodeDataType("text", "Text");
+  }
 };

@@ -2,22 +2,13 @@
 
 #include "GradientData.hpp"
 #include "GradientInputList.hpp"
-#include "NodeDelegateModel.hpp"
 
-#include <QQmlComponent>
-#include <QtCore/QObject>
-#include <memory>
-#include <qcolor.h>
-#include <qjsvalue.h>
-#include <qqmlcomponent.h>
-#include <qqmlengine.h>
-#include <qtmetamacros.h>
-#include <qvariant.h>
+#include <NodeEditor/NodeModel>
 
-class GradientInputNode : public NodeDelegateModel {
+class GradientInputNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   Q_PROPERTY(GradientInputList *colorList READ colorList CONSTANT)
 
@@ -32,8 +23,14 @@ class GradientInputNode : public NodeDelegateModel {
   QJsonObject save() const override;
   void load(QJsonObject const &p) override;
 
-  QString portCaption(PortSide portSide, PortIndex portIndex) const override { return QString(); };
-  bool portCaptionVisible(PortSide, PortIndex) const override { return true; }
+  QString portCaption(NodeEditor::PortSide portSide,
+                      NodeEditor::PortIndex portIndex) const override {
+    return QString();
+  };
+  bool portCaptionVisible(NodeEditor::PortSide _portSide,
+                          NodeEditor::PortIndex _portIndex) const override {
+    return true;
+  }
 
   QQmlComponent embeddedComponent(QQmlEngine *engine) override {
     return QQmlComponent(engine, "CutieDesigner.Nodes.Input", "GradientInputControl");
@@ -43,10 +40,12 @@ class GradientInputNode : public NodeDelegateModel {
     return QVariantMap{{"node", QVariant::fromValue(this)}};
   }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override {};
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override {};
 
   GradientInputList *colorList() { return _list.get(); }
 

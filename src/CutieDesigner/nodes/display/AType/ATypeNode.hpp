@@ -1,24 +1,19 @@
 #pragma once
 
 #include "ATypeCharacterNodeModel.hpp"
-#include "NodeDelegateModel.hpp"
 #include "SurfaceData.hpp"
 
 #include <QQmlComponent>
 #include <QtCore/QObject>
-#include <memory>
-#include <qcontainerfwd.h>
-#include <qjsvalue.h>
-#include <qqmlcomponent.h>
-#include <qqmlcontext.h>
-#include <qqmlengine.h>
-#include <qsharedpointer.h>
-#include <qtmetamacros.h>
 
-class ATypeNode : public NodeDelegateModel {
+#include <memory>
+
+#include <NodeEditor/NodeModel>
+
+class ATypeNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
-  QML_UNCREATABLE("NodeDelegateModel")
+  QML_UNCREATABLE("NodeModel")
 
   Q_PROPERTY(QString text READ getText NOTIFY textChanged)
   Q_PROPERTY(ATypeCharacterNodeModel *character MEMBER _charModel NOTIFY charChanged)
@@ -31,10 +26,12 @@ class ATypeNode : public NodeDelegateModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return QStringLiteral("AType"); }
 
-  unsigned int nPorts(PortSide portSide) const override;
-  NodeDataType dataType(PortSide portSide, PortIndex portIndex) const override;
-  std::shared_ptr<NodeData> outData(PortIndex port) override;
-  void setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) override;
+  unsigned int nPorts(NodeEditor::PortSide portSide) const override;
+  NodeEditor::NodeDataType dataType(NodeEditor::PortSide portSide,
+                                    NodeEditor::PortIndex portIndex) const override;
+  std::shared_ptr<NodeEditor::NodeData> outData(NodeEditor::PortIndex port) override;
+  void setInData(std::shared_ptr<NodeEditor::NodeData> data,
+                 NodeEditor::PortIndex portIndex) override;
   std::shared_ptr<SurfaceData> createATypeSurfaceData(QQmlEngine *engine);
 
   QString getText() {
@@ -50,7 +47,7 @@ class ATypeNode : public NodeDelegateModel {
   void charChanged();
 
   private:
-  std::weak_ptr<NodeData> _text;
+  std::weak_ptr<NodeEditor::NodeData> _text;
   ATypeCharacterNodeModel *_charModel = nullptr;
   std::shared_ptr<SurfaceData> _content;
 };
