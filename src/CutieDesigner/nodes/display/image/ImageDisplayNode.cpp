@@ -11,7 +11,9 @@ ImageDisplayNode::ImageDisplayNode(QQmlEngine *engine) : NodeModel(engine) {
 }
 
 QJsonObject ImageDisplayNode::save() const {
-  return QJsonObject({{"source", _sourceUrl->toDisplayString()}});
+  if (_sourceUrl.has_value())
+    return QJsonObject({{"source", _sourceUrl->toDisplayString()}});
+  return QJsonObject();
 }
 
 void ImageDisplayNode::load(QJsonObject const &json) {
