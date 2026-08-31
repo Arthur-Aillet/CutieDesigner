@@ -63,29 +63,27 @@
     ],
     "nodes": [
         {
-            "id": 4,
+            "id": 5,
             "internal-data": {
-                "mode": 15
             },
             "label": "",
             "labelVisible": false,
-            "model-name": "Blend",
+            "model-name": "Fill",
             "position": {
-                "x": 252,
-                "y": 59
+                "x": 33,
+                "y": 67
             }
         },
         {
-            "id": 6,
+            "id": 8,
             "internal-data": {
-                "color": "#6729da"
             },
             "label": "",
             "labelVisible": false,
-            "model-name": "Color",
+            "model-name": "Time",
             "position": {
-                "x": -379,
-                "y": 44
+                "x": -606,
+                "y": -24
             }
         },
         {
@@ -102,6 +100,18 @@
             }
         },
         {
+            "id": 2,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Camera",
+            "position": {
+                "x": -252,
+                "y": 290
+            }
+        },
+        {
             "id": 7,
             "internal-data": {
                 "mode": 2
@@ -110,20 +120,8 @@
             "labelVisible": false,
             "model-name": "Combine Color",
             "position": {
-                "x": -277,
-                "y": 95
-            }
-        },
-        {
-            "id": 5,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Fill",
-            "position": {
-                "x": 33,
-                "y": 67
+                "x": -274,
+                "y": 69
             }
         },
         {
@@ -135,8 +133,21 @@
             "labelVisible": false,
             "model-name": "Blend",
             "position": {
-                "x": 405,
-                "y": 253
+                "x": 600,
+                "y": 66
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+                "mode": 15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 322,
+                "y": 69
             }
         },
         {
@@ -148,32 +159,8 @@
             "labelVisible": false,
             "model-name": "Dithering",
             "position": {
-                "x": 32,
-                "y": 170
-            }
-        },
-        {
-            "id": 8,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Time",
-            "position": {
-                "x": -771,
-                "y": 16
-            }
-        },
-        {
-            "id": 2,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Camera",
-            "position": {
-                "x": -150,
-                "y": 263
+                "x": -107,
+                "y": 207
             }
         }
     ]

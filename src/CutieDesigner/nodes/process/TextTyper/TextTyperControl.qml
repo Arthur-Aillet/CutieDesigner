@@ -3,7 +3,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import NodeEditor
 import CutieDesigner.Nodes.Process
 import CutieDesigner.Time
 import CutieUiModule as Cute
