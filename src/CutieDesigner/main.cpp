@@ -30,6 +30,7 @@
 #include "ImageDisplayNode.hpp"
 #include "MaskNode.hpp"
 #include "MultiplicationNode.hpp"
+#include "NoiseNode.hpp"
 #include "SinNode.hpp"
 #include "SplitColorNode.hpp"
 #include "SplitVec2Node.hpp"
@@ -96,6 +97,7 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<VideoDisplayNode>("Display");
   reg->registerModel<StackNode>("Display");
   reg->registerModel<ImageDisplayNode>("Display");
+  reg->registerModel<NoiseNode>("Display");
   return reg;
 }
 

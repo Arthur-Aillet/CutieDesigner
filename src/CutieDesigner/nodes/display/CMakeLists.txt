@@ -19,6 +19,8 @@ qt_add_qml_module(display
   camera/CameraHandler.qml
   image/ImageDisplay.qml
   image/ImageDisplayControl.qml
+  noise/Noise.qml
+  noise/NoiseControl.qml
   video/VideoDisplay.qml
   video/VideoDisplayControl.qml
   Stack/Stack.qml
@@ -54,6 +56,8 @@ qt_add_qml_module(display
   camera/CameraNode.cpp
   image/ImageDisplayNode.hpp
   image/ImageDisplayNode.cpp
+  noise/NoiseNode.cpp
+  noise/NoiseNode.hpp
   video/VideoDisplayNode.hpp
   video/VideoDisplayNode.cpp
 
@@ -74,6 +78,8 @@ qt_add_qml_module(display
   shaderEffects/Mask/mask.frag
   shaderEffects/Dithering/dithering.vert
   shaderEffects/Dithering/dithering.frag
+  noise/noise.vert
+  noise/noise.frag
 )
 
 target_link_directories(display
@@ -96,6 +102,7 @@ target_include_directories(display
   camera
   image
   video
+  noise
   ${QT_AVPLAYER_DIR}/..
   ${Qt6MultimediaQuick_PRIVATE_INCLUDE_DIRS}
   ${Qt6Multimedia_PRIVATE_INCLUDE_DIRS}
