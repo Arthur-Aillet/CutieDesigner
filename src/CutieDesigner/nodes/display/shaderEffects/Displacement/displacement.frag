@@ -25,7 +25,7 @@ void main() {
   bool inside = mappedCoord.x < mapRect.z && mappedCoord.y < mapRect.w;
 
   vec4 mapText = texture(map, mappedCoord / imageRect.zw);
-  vec2 displacement = vec2(lerp(minDisp, maxDisp, mapText.r) / imageRect.w, lerp(minDisp, maxDisp, mapText.g) / imageRect.z);
+  vec2 displacement = vec2(lerp(minDisp, maxDisp, mapText.r) / imageRect.z, lerp(minDisp, maxDisp, mapText.g) / imageRect.w);
   vec4 colorSource = texture(image, texCoord + displacement);
 
   fragColor = colorSource * qt_Opacity;

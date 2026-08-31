@@ -13,6 +13,7 @@ class NoiseNode : public NodeEditor::NodeModel {
   public:
   Q_PROPERTY(double time READ time NOTIFY timeChanged)
   Q_PROPERTY(int mode READ mode WRITE setMode NOTIFY modeChanged)
+  Q_PROPERTY(double scale READ scale NOTIFY scaleChanged)
 
   NoiseNode(QQmlEngine *engine);
   ~NoiseNode() = default;
@@ -41,6 +42,7 @@ class NoiseNode : public NodeEditor::NodeModel {
   QVariantMap componentInitialProperties() override;
 
   double time() { return _time; }
+  double scale() { return _scale; }
   int mode() { return _mode; }
   void setMode(int mode) {
     if (_mode == mode)
@@ -51,10 +53,12 @@ class NoiseNode : public NodeEditor::NodeModel {
 
   signals:
   void timeChanged();
+  void scaleChanged();
   void modeChanged();
 
   private:
   int _mode = 0;
+  double _scale = 1.0;
   double _time = 1.0;
   std::shared_ptr<SurfaceData> _content = nullptr;
 };

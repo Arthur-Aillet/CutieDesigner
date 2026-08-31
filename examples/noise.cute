@@ -1,21 +1,9 @@
 {
     "connections": [
         {
-            "inNodeId": 8,
-            "inPortIndex": 1,
+            "inNodeId": 2,
+            "inPortIndex": 0,
             "outNodeId": 3,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 9,
-            "inPortIndex": 0,
-            "outNodeId": 10,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 10,
-            "inPortIndex": 0,
-            "outNodeId": 11,
             "outPortIndex": 0
         },
         {
@@ -25,92 +13,228 @@
             "outPortIndex": 0
         },
         {
-            "inNodeId": 12,
-            "inPortIndex": 1,
-            "outNodeId": 9,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 3,
-            "inPortIndex": 1,
-            "outNodeId": 13,
-            "outPortIndex": 4
-        },
-        {
-            "inNodeId": 2,
-            "inPortIndex": 2,
-            "outNodeId": 5,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 2,
+            "inNodeId": 5,
             "inPortIndex": 0,
-            "outNodeId": 1,
+            "outNodeId": 13,
             "outPortIndex": 0
         },
         {
-            "inNodeId": 2,
-            "inPortIndex": 1,
-            "outNodeId": 12,
+            "inNodeId": 1,
+            "inPortIndex": 0,
+            "outNodeId": 13,
             "outPortIndex": 0
         },
         {
             "inNodeId": 9,
             "inPortIndex": 1,
-            "outNodeId": 6,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 14,
-            "inPortIndex": 0,
-            "outNodeId": 13,
-            "outPortIndex": 4
-        },
-        {
-            "inNodeId": 12,
-            "inPortIndex": 0,
             "outNodeId": 8,
             "outPortIndex": 0
         },
         {
             "inNodeId": 0,
             "inPortIndex": 0,
-            "outNodeId": 2,
-            "outPortIndex": 0
-        },
-        {
-            "inNodeId": 6,
-            "inPortIndex": 1,
-            "outNodeId": 14,
+            "outNodeId": 9,
             "outPortIndex": 0
         },
         {
             "inNodeId": 2,
-            "inPortIndex": 3,
+            "inPortIndex": 1,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 9,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 0,
             "outNodeId": 4,
             "outPortIndex": 0
         },
         {
-            "inNodeId": 14,
+            "inNodeId": 8,
             "inPortIndex": 1,
-            "outNodeId": 15,
+            "outNodeId": 5,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 7,
+            "inPortIndex": 0,
+            "outNodeId": 6,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 11,
+            "inPortIndex": 1,
+            "outNodeId": 16,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 16,
+            "inPortIndex": 0,
+            "outNodeId": 10,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 5,
+            "inPortIndex": 1,
+            "outNodeId": 16,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 11,
+            "inPortIndex": 0,
+            "outNodeId": 12,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 1,
+            "inPortIndex": 1,
+            "outNodeId": 11,
             "outPortIndex": 0
         }
     ],
     "nodes": [
         {
-            "id": 5,
+            "id": 2,
             "internal-data": {
-                "max": 15,
-                "min": -15,
-                "value": -15
+                "mode": 19
             },
             "label": "",
             "labelVisible": false,
-            "model-name": "Slider",
+            "model-name": "Blend",
             "position": {
-                "x": 101.15493774414062,
-                "y": 352.15234375
+                "x": 251.00000508626306,
+                "y": 137
+            }
+        },
+        {
+            "id": 5,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -159.87130433141192,
+                "y": 379.09713509970265
+            }
+        },
+        {
+            "id": 10,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Time",
+            "position": {
+                "x": -828,
+                "y": 169
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+                "color": "#f60000"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color",
+            "position": {
+                "x": -132.843760172526,
+                "y": 10.5703125
+            }
+        },
+        {
+            "id": 3,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": 56.00000508626306,
+                "y": -16
+            }
+        },
+        {
+            "id": 11,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Addition",
+            "position": {
+                "x": -341.6721201130365,
+                "y": 168.39575934940115
+            }
+        },
+        {
+            "id": 1,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -143.99999491373694,
+                "y": 159
+            }
+        },
+        {
+            "id": 16,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Sin",
+            "position": {
+                "x": -567.7626213683553,
+                "y": 276.1740449150309
+            }
+        },
+        {
+            "id": 12,
+            "internal-data": {
+                "number": 0.5
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -585.8366635974055,
+                "y": 198.39575934940115
+            }
+        },
+        {
+            "id": 9,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 511.5969641576488,
+                "y": 175.83882002751773
+            }
+        },
+        {
+            "id": 13,
+            "internal-data": {
+                "number": 1
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -330.23869205701567,
+                "y": 310.7305557979341
             }
         },
         {
@@ -121,175 +245,34 @@
             "labelVisible": false,
             "model-name": "Fill",
             "position": {
-                "x": -175.00141435547346,
-                "y": 13.140118513504149
-            }
-        },
-        {
-            "id": 11,
-            "internal-data": {
-                "color": "#00ff00"
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Color",
-            "position": {
-                "x": -416.37818466120007,
-                "y": 274.795819235052
-            }
-        },
-        {
-            "id": 1,
-            "internal-data": {
-                "source": "file:///home/arail/Pictures/Logo_Smile.png"
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Image",
-            "position": {
-                "x": 252.00000508626306,
-                "y": -67
-            }
-        },
-        {
-            "id": 12,
-            "internal-data": {
-                "mode": 0
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Blend",
-            "position": {
-                "x": 272.6870012836815,
-                "y": 181.81223766643848
-            }
-        },
-        {
-            "id": 3,
-            "internal-data": {
-                "mode": 2
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Noise",
-            "position": {
-                "x": -381.039072672526,
-                "y": 135.47265625
-            }
-        },
-        {
-            "id": 15,
-            "internal-data": {
-                "number": 0.5
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Number",
-            "position": {
-                "x": -694.7613348097035,
-                "y": 260.7555992178311
+                "x": 57.12869566858808,
+                "y": 244.09713509970265
             }
         },
         {
             "id": 6,
             "internal-data": {
-                "mode": 2
+                "color": "#000df6"
             },
             "label": "",
             "labelVisible": false,
-            "model-name": "Noise",
+            "model-name": "Color",
             "position": {
-                "x": -373.9661560058594,
-                "y": 416.03515625
-            }
-        },
-        {
-            "id": 13,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Time",
-            "position": {
-                "x": -706.6465887077472,
-                "y": 42.46055523353857
+                "x": -116.71506959020098,
+                "y": 280.66744759970265
             }
         },
         {
             "id": 8,
             "internal-data": {
-                "mode": 15
+                "mode": 19
             },
             "label": "",
             "labelVisible": false,
             "model-name": "Blend",
             "position": {
-                "x": -0.8703717672966604,
-                "y": 129.27128304684697
-            }
-        },
-        {
-            "id": 9,
-            "internal-data": {
-                "mode": 15
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Blend",
-            "position": {
-                "x": -32.41763737799613,
-                "y": 236.901127973244
-            }
-        },
-        {
-            "id": 2,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Displacement",
-            "position": {
-                "x": 538.0000050862631,
-                "y": 188
-            }
-        },
-        {
-            "id": 10,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Fill",
-            "position": {
-                "x": -235.05017275015564,
-                "y": 274.60275590212655
-            }
-        },
-        {
-            "id": 14,
-            "internal-data": {
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Addition",
-            "position": {
-                "x": -525.8925603156295,
-                "y": 229.7555992178311
-            }
-        },
-        {
-            "id": 4,
-            "internal-data": {
-                "max": 15,
-                "min": 0,
-                "value": 15
-            },
-            "label": "",
-            "labelVisible": false,
-            "model-name": "Slider",
-            "position": {
-                "x": 114.00000508626306,
-                "y": 400
+                "x": 271.1286956685881,
+                "y": 267.09713509970265
             }
         }
     ]

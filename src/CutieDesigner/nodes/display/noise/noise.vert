@@ -9,6 +9,7 @@ layout(std140, binding = 0) uniform buf {
   float qt_Opacity;
   vec3 iResolution;
   float iTime;
+  float scale;
   int mode;
 };
 

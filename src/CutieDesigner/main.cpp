@@ -106,7 +106,6 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
   QQmlApplicationEngine engine;
-
   QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
   engine.rootContext()->setContextProperty("app", &app);

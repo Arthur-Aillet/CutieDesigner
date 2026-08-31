@@ -23,7 +23,7 @@ void NoiseNode::load(QJsonObject const &json) {
 unsigned int NoiseNode::nPorts(PortSide portSide) const {
   switch (portSide) {
   case PortSide::In:
-    return 1;
+    return 2;
   default:
     return 1;
   }
@@ -33,6 +33,7 @@ NodeDataType NoiseNode::dataType(PortSide portSide, PortIndex portIndex) const {
   if (portSide == PortSide::In) {
     switch (portIndex) {
     case (0):
+    case (1):
       return DecimalData().type();
     default:
       return DecimalData().type();
@@ -46,18 +47,32 @@ std::shared_ptr<NodeData> NoiseNode::outData(PortIndex _portIndex) { return _con
 
 void NoiseNode::setInData(std::shared_ptr<NodeData> data, PortIndex portIndex) {
   if (data == nullptr) {
-    _time = 1.0;
-    emit timeChanged();
+    if (portIndex == 0) {
+      _scale = 1.0;
+      emit scaleChanged();
+    } else {
+      _time = 1.0;
+      emit timeChanged();
+    }
   } else {
-    _time = data->repr<double>();
-    emit timeChanged();
+    if (portIndex == 0) {
+      _scale = data->repr<double>();
+      emit scaleChanged();
+    } else {
+      _time = data->repr<double>();
+      emit timeChanged();
+    }
   }
 }
 
 QString NoiseNode::portCaption(PortSide portSide, PortIndex portIndex) const {
   switch (portSide) {
   case PortSide::In:
-    return "time";
+    if (portIndex == 0) {
+      return "scale";
+    } else {
+      return "time";
+    }
   default:
     return "out";
   }
