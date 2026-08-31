@@ -1,0 +1,352 @@
+{
+    "connections": [
+        {
+            "inNodeId": 8,
+            "inPortIndex": 1,
+            "outNodeId": 3,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 9,
+            "inPortIndex": 0,
+            "outNodeId": 10,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 10,
+            "inPortIndex": 0,
+            "outNodeId": 11,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 0,
+            "outNodeId": 7,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 12,
+            "inPortIndex": 1,
+            "outNodeId": 9,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 1,
+            "outNodeId": 13,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 17,
+            "inPortIndex": 0,
+            "outNodeId": 18,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 16,
+            "inPortIndex": 1,
+            "outNodeId": 17,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 1,
+            "outNodeId": 16,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 16,
+            "inPortIndex": 0,
+            "outNodeId": 12,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 2,
+            "outNodeId": 5,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 0,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 9,
+            "inPortIndex": 1,
+            "outNodeId": 6,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 14,
+            "inPortIndex": 0,
+            "outNodeId": 13,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 12,
+            "inPortIndex": 0,
+            "outNodeId": 8,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 0,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 1,
+            "outNodeId": 14,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 3,
+            "outNodeId": 4,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 14,
+            "inPortIndex": 1,
+            "outNodeId": 15,
+            "outPortIndex": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": 3,
+            "internal-data": {
+                "mode": 1
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -381.039072672526,
+                "y": 135.47265625
+            }
+        },
+        {
+            "id": 7,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": -374.00141435547346,
+                "y": -5.859881486495851
+            }
+        },
+        {
+            "id": 18,
+            "internal-data": {
+                "color": "#ffffff"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color",
+            "position": {
+                "x": -29.099445401079265,
+                "y": 390.11557464898476
+            }
+        },
+        {
+            "id": 1,
+            "internal-data": {
+                "source": "file:///home/arail/Pictures/Logo_Smile.png"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Image",
+            "position": {
+                "x": 216.00000508626306,
+                "y": -69
+            }
+        },
+        {
+            "id": 13,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Time",
+            "position": {
+                "x": -706.6465887077472,
+                "y": 42.46055523353857
+            }
+        },
+        {
+            "id": 14,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Addition",
+            "position": {
+                "x": -525.8925603156295,
+                "y": 229.7555992178311
+            }
+        },
+        {
+            "id": 16,
+            "internal-data": {
+                "mode": 1
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 359.43527394000864,
+                "y": 232.0062048424769
+            }
+        },
+        {
+            "id": 2,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Displacement",
+            "position": {
+                "x": 613.0000050862631,
+                "y": 169
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+                "max": 15,
+                "min": 0,
+                "value": 15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 344.00000508626306,
+                "y": 468
+            }
+        },
+        {
+            "id": 12,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 106.68700128368152,
+                "y": 218.81223766643848
+            }
+        },
+        {
+            "id": 17,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": 178.54761045253065,
+                "y": 320.11557464898476
+            }
+        },
+        {
+            "id": 11,
+            "internal-data": {
+                "color": "#00ff00"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color",
+            "position": {
+                "x": -416.37818466120007,
+                "y": 274.795819235052
+            }
+        },
+        {
+            "id": 8,
+            "internal-data": {
+                "mode": 15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": -137.87037176729666,
+                "y": 73.27128304684697
+            }
+        },
+        {
+            "id": 9,
+            "internal-data": {
+                "mode": 15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": -96.41763737799613,
+                "y": 272.901127973244
+            }
+        },
+        {
+            "id": 10,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": -235.05017275015564,
+                "y": 274.60275590212655
+            }
+        },
+        {
+            "id": 5,
+            "internal-data": {
+                "max": 15,
+                "min": -15,
+                "value": -15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 328.1549377441406,
+                "y": 399.15234375
+            }
+        },
+        {
+            "id": 15,
+            "internal-data": {
+                "number": 0.5
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -694.7613348097035,
+                "y": 260.7555992178311
+            }
+        },
+        {
+            "id": 6,
+            "internal-data": {
+                "mode": 1
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -373.9661560058594,
+                "y": 416.03515625
+            }
+        }
+    ]
+}
