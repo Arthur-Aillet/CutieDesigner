@@ -10,7 +10,7 @@ layout(std140, binding = 0) uniform buf {
   float qt_Opacity;
   vec3 iResolution;
   float iTime;
-  float scale;
+  float scaleNoise;
   int mode;
 };
 
@@ -107,7 +107,7 @@ void main() {
 	vec2 uv = fragCoord.xy / iResolution.xy;
 
   uv *= vec2(iResolution.x/iResolution.y, 1.);
-  uv *= 1 / scale;
+  uv *= 1 / scaleNoise;
 
   float f = noise(uv);
 
