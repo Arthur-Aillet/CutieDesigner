@@ -1,0 +1,252 @@
+{
+    "connections": [
+        {
+            "inNodeId": 2,
+            "inPortIndex": 0,
+            "outNodeId": 3,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 0,
+            "outNodeId": 7,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 9,
+            "inPortIndex": 1,
+            "outNodeId": 8,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 0,
+            "inPortIndex": 0,
+            "outNodeId": 9,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 1,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 9,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 0,
+            "outNodeId": 4,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 1,
+            "outNodeId": 5,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 1,
+            "inPortIndex": 0,
+            "outNodeId": 11,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 7,
+            "inPortIndex": 0,
+            "outNodeId": 6,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 11,
+            "inPortIndex": 1,
+            "outNodeId": 16,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 16,
+            "inPortIndex": 0,
+            "outNodeId": 10,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 5,
+            "inPortIndex": 0,
+            "outNodeId": 16,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 11,
+            "inPortIndex": 0,
+            "outNodeId": 12,
+            "outPortIndex": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": 1,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -143.99999491373694,
+                "y": 159
+            }
+        },
+        {
+            "id": 2,
+            "internal-data": {
+                "mode": 19
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 251.00000508626306,
+                "y": 137
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+                "color": "#f60000"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color",
+            "position": {
+                "x": -132.843760172526,
+                "y": 10.5703125
+            }
+        },
+        {
+            "id": 16,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Sin",
+            "position": {
+                "x": -567.7626213683553,
+                "y": 276.1740449150309
+            }
+        },
+        {
+            "id": 11,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Addition",
+            "position": {
+                "x": -341.6721201130365,
+                "y": 168.39575934940115
+            }
+        },
+        {
+            "id": 3,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": 56.00000508626306,
+                "y": -16
+            }
+        },
+        {
+            "id": 5,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -159.87130433141192,
+                "y": 379.09713509970265
+            }
+        },
+        {
+            "id": 12,
+            "internal-data": {
+                "number": 0.5
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -585.8366635974055,
+                "y": 198.39575934940115
+            }
+        },
+        {
+            "id": 8,
+            "internal-data": {
+                "mode": 19
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 271.1286956685881,
+                "y": 267.09713509970265
+            }
+        },
+        {
+            "id": 9,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": 511.5969641576488,
+                "y": 175.83882002751773
+            }
+        },
+        {
+            "id": 10,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Time",
+            "position": {
+                "x": -828,
+                "y": 169
+            }
+        },
+        {
+            "id": 7,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": 57.12869566858808,
+                "y": 244.09713509970265
+            }
+        },
+        {
+            "id": 6,
+            "internal-data": {
+                "color": "#000df6"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color",
+            "position": {
+                "x": -116.71506959020098,
+                "y": 280.66744759970265
+            }
+        }
+    ]
+}

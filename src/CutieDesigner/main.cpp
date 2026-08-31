@@ -1,4 +1,5 @@
 #include "CutieWindow.hpp"
+#include "DisplacementNode.hpp"
 #include "DitheringNode.hpp"
 #include "MaxNode.hpp"
 #include "MinNode.hpp"
@@ -92,6 +93,7 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<MaskNode>("Display");
   reg->registerModel<BlendNode>("Display");
   reg->registerModel<DitheringNode>("Display");
+  reg->registerModel<DisplacementNode>("Display");
   reg->registerModel<CameraNode>("Display");
   reg->registerModel<FillNode>("Display");
   reg->registerModel<VideoDisplayNode>("Display");

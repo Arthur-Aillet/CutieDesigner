@@ -109,6 +109,8 @@ void main() {
 
   float f = noise(uv);
 
+  f = f * 0.5 + 0.5;
+
 	fragColor = vec4(f, f, f, 1.0) * qt_Opacity;
 
 }
