@@ -5,23 +5,21 @@
 #include <NodeEditor/NodeData>
 #include <NodeEditor/NodeModel>
 
-class ColorAdjustNode : public NodeEditor::NodeModel {
+class BlurNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
   QML_UNCREATABLE("NodeModel")
 
   public:
   Q_PROPERTY(SurfaceData *source READ source NOTIFY sourceChanged)
-  Q_PROPERTY(float saturation READ saturation NOTIFY saturationChanged)
-  Q_PROPERTY(float brightness READ brightness NOTIFY brightnessChanged)
-  Q_PROPERTY(float contrast READ contrast NOTIFY contrastChanged)
+  Q_PROPERTY(float radius READ radius NOTIFY radiusChanged)
 
-  ColorAdjustNode(QQmlEngine *engine);
-  ~ColorAdjustNode() = default;
+  BlurNode(QQmlEngine *engine);
+  ~BlurNode() = default;
 
   public:
   bool captionVisible() const override { return true; }
-  QString name() const override { return "Color Adjust"; }
+  QString name() const override { return "Blur"; }
 
   QString portCaption(NodeEditor::PortSide portSide,
                       NodeEditor::PortIndex portIndex) const override;
@@ -38,20 +36,14 @@ class ColorAdjustNode : public NodeEditor::NodeModel {
                  NodeEditor::PortIndex portIndex) override;
 
   SurfaceData *source() { return _source.lock().get(); }
-  float brightness() { return _brightness; }
-  float contrast() { return _contrast; }
-  float saturation() { return _saturation; }
+  float radius() { return _radius; }
 
   signals:
   void sourceChanged();
-  void brightnessChanged();
-  void contrastChanged();
-  void saturationChanged();
+  void radiusChanged();
 
   private:
-  float _brightness = 0.0;
-  float _contrast = 1.0;
-  float _saturation = 1.0;
+  float _radius = 32.0;
   std::weak_ptr<SurfaceData> _source;
   std::shared_ptr<SurfaceData> _content;
 };

@@ -33,6 +33,20 @@ VideoDisplayNode::VideoDisplayNode(QQmlEngine *engine) : NodeModel(engine) {
       Qt::DirectConnection);
 }
 
+QJsonObject VideoDisplayNode::save() const {
+  if (_sourceUrl.has_value())
+    return QJsonObject({{"source", _sourceUrl->toDisplayString()}});
+  return QJsonObject();
+}
+
+void VideoDisplayNode::load(QJsonObject const &json) {
+  QJsonValue source = json["source"];
+
+  if (!source.isUndefined()) {
+    _sourceUrl = source.toString();
+  }
+}
+
 unsigned int VideoDisplayNode::nPorts(PortSide portSide) const {
   switch (portSide) {
   case PortSide::In:

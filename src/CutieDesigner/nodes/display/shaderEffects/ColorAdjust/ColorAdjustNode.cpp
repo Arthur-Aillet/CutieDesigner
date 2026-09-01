@@ -86,7 +86,7 @@ QString ColorAdjustNode::portCaption(PortSide portSide, PortIndex portIndex) con
   case PortSide::In:
     switch (portIndex) {
     case 0:
-      return "image";
+      return "source";
     case 1:
       return "brigthness";
     case 2:

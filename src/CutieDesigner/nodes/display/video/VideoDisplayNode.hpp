@@ -29,6 +29,9 @@ class VideoDisplayNode : public NodeEditor::NodeModel {
   bool captionVisible() const override { return true; }
   QString name() const override { return "Video"; }
 
+  QJsonObject save() const override;
+  void load(QJsonObject const &p) override;
+
   QString portCaption(NodeEditor::PortSide portSide,
                       NodeEditor::PortIndex portIndex) const override;
   bool portCaptionVisible(NodeEditor::PortSide _portSide,

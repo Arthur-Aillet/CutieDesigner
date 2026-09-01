@@ -11,6 +11,7 @@ qt_add_qml_module(display
   fill/FillSurface.qml
   shaderEffects/Blend/Blend.qml
   shaderEffects/Blend/BlendControl.qml
+  shaderEffects/Blur/Blur.qml
   shaderEffects/ColorAdjust/ColorAdjust.qml
   shaderEffects/Mask/Mask.qml
   shaderEffects/Mask/MaskControl.qml
@@ -50,6 +51,8 @@ qt_add_qml_module(display
   surface/SurfaceLoader.cpp
   shaderEffects/Blend/BlendNode.cpp
   shaderEffects/Blend/BlendNode.hpp
+  shaderEffects/Blur/BlurNode.cpp
+  shaderEffects/Blur/BlurNode.hpp
   shaderEffects/ColorAdjust/ColorAdjustNode.cpp
   shaderEffects/ColorAdjust/ColorAdjustNode.hpp
   shaderEffects/Mask/MaskNode.cpp
@@ -107,6 +110,7 @@ target_include_directories(display
   Stack
   shaderEffects
   shaderEffects/Blend
+  shaderEffects/Blur
   shaderEffects/ColorAdjust
   shaderEffects/Mask
   shaderEffects/Displacement
