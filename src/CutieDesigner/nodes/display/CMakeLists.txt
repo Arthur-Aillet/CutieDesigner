@@ -11,10 +11,10 @@ qt_add_qml_module(display
   fill/FillSurface.qml
   shaderEffects/Blend/Blend.qml
   shaderEffects/Blend/BlendControl.qml
+  shaderEffects/ColorAdjust/ColorAdjust.qml
   shaderEffects/Mask/Mask.qml
   shaderEffects/Mask/MaskControl.qml
   shaderEffects/Displacement/Displacement.qml
-  shaderEffects/Displacement/DisplacementControl.qml
   shaderEffects/Dithering/Dithering.qml
   shaderEffects/Dithering/DitheringControl.qml
   camera/CameraOutput.qml
@@ -50,6 +50,8 @@ qt_add_qml_module(display
   surface/SurfaceLoader.cpp
   shaderEffects/Blend/BlendNode.cpp
   shaderEffects/Blend/BlendNode.hpp
+  shaderEffects/ColorAdjust/ColorAdjustNode.cpp
+  shaderEffects/ColorAdjust/ColorAdjustNode.hpp
   shaderEffects/Mask/MaskNode.cpp
   shaderEffects/Mask/MaskNode.hpp
   shaderEffects/Displacement/DisplacementNode.cpp
@@ -78,6 +80,8 @@ qt_add_qml_module(display
   AType/Ukrug/ukrug.frag
   shaderEffects/Blend/blend.vert
   shaderEffects/Blend/blend.frag
+  shaderEffects/ColorAdjust/colorAdjust.vert
+  shaderEffects/ColorAdjust/colorAdjust.frag
   shaderEffects/Mask/mask.vert
   shaderEffects/Mask/mask.frag
   shaderEffects/Displacement/displacement.vert
@@ -103,6 +107,7 @@ target_include_directories(display
   Stack
   shaderEffects
   shaderEffects/Blend
+  shaderEffects/ColorAdjust
   shaderEffects/Mask
   shaderEffects/Displacement
   shaderEffects/Dithering

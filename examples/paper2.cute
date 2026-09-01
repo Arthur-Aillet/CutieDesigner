@@ -1,0 +1,492 @@
+{
+    "connections": [
+        {
+            "inNodeId": 6,
+            "inPortIndex": 0,
+            "outNodeId": 3,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 1,
+            "outNodeId": 6,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 1,
+            "outNodeId": 7,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 10,
+            "inPortIndex": 1,
+            "outNodeId": 11,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 17,
+            "inPortIndex": 3,
+            "outNodeId": 20,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 17,
+            "inPortIndex": 1,
+            "outNodeId": 18,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 14,
+            "inPortIndex": 1,
+            "outNodeId": 17,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 3,
+            "outNodeId": 9,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 10,
+            "inPortIndex": 0,
+            "outNodeId": 17,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 22,
+            "inPortIndex": 0,
+            "outNodeId": 21,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 22,
+            "inPortIndex": 1,
+            "outNodeId": 23,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 2,
+            "inPortIndex": 0,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 17,
+            "inPortIndex": 2,
+            "outNodeId": 19,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 10,
+            "inPortIndex": 2,
+            "outNodeId": 12,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 4,
+            "inPortIndex": 1,
+            "outNodeId": 5,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 24,
+            "inPortIndex": 0,
+            "outNodeId": 22,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 0,
+            "inPortIndex": 0,
+            "outNodeId": 10,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 21,
+            "inPortIndex": 0,
+            "outNodeId": 16,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 24,
+            "inPortIndex": 1,
+            "outNodeId": 25,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 15,
+            "inPortIndex": 1,
+            "outNodeId": 24,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 2,
+            "outNodeId": 8,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 10,
+            "inPortIndex": 3,
+            "outNodeId": 13,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 4,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 17,
+            "inPortIndex": 0,
+            "outNodeId": 15,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 14,
+            "inPortIndex": 0,
+            "outNodeId": 4,
+            "outPortIndex": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": 19,
+            "internal-data": {
+                "max": 1000,
+                "min": 0,
+                "value": 1000
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -123.89085025281088,
+                "y": -14.553650856416766
+            }
+        },
+        {
+            "id": 2,
+            "internal-data": {
+                "mode": 15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Blend",
+            "position": {
+                "x": -274,
+                "y": 74
+            }
+        },
+        {
+            "id": 12,
+            "internal-data": {
+                "max": 3,
+                "min": 0,
+                "value": 1.0348778520541209
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 307.35925339261996,
+                "y": 448.91564010138745
+            }
+        },
+        {
+            "id": 5,
+            "internal-data": {
+                "source": "file:///home/arail/Pictures/Logo_Smile.png"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Image",
+            "position": {
+                "x": -282.87757219429363,
+                "y": 191.10843143868135
+            }
+        },
+        {
+            "id": 11,
+            "internal-data": {
+                "max": 1,
+                "min": 0,
+                "value": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 307.2736259025752,
+                "y": 377.80220060230454
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+                "inverted": true,
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Mask",
+            "position": {
+                "x": 24.112731258704457,
+                "y": 72.1798728240675
+            }
+        },
+        {
+            "id": 25,
+            "internal-data": {
+                "number": 2
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -552.5358964294402,
+                "y": 10.761907697138668
+            }
+        },
+        {
+            "id": 21,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Sin",
+            "position": {
+                "x": -797.4627292718833,
+                "y": -114.01856989588089
+            }
+        },
+        {
+            "id": 7,
+            "internal-data": {
+                "max": 1,
+                "min": -2,
+                "value": -0.54189
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -833.5722008059536,
+                "y": 187.76267827367155
+            }
+        },
+        {
+            "id": 9,
+            "internal-data": {
+                "max": 1,
+                "min": 0,
+                "value": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -830.57975022687,
+                "y": 290.3631887871803
+            }
+        },
+        {
+            "id": 20,
+            "internal-data": {
+                "max": 1,
+                "min": 0,
+                "value": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -123.39559042022722,
+                "y": 25.897180555515206
+            }
+        },
+        {
+            "id": 17,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color Adjust",
+            "position": {
+                "x": 192.59068869033604,
+                "y": -120.50808500492826
+            }
+        },
+        {
+            "id": 15,
+            "internal-data": {
+                "mode": 0
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -124.86870427282827,
+                "y": -171.20796550490934
+            }
+        },
+        {
+            "id": 10,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color Adjust",
+            "position": {
+                "x": 576.648513585133,
+                "y": 231.80220060230454
+            }
+        },
+        {
+            "id": 8,
+            "internal-data": {
+                "max": 3,
+                "min": 0,
+                "value": 2.351924954738701
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -830.8117373403527,
+                "y": 237.33026468918433
+            }
+        },
+        {
+            "id": 1,
+            "internal-data": {
+                "source": "file:///home/arail/Pictures/Logo_Smile.png"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Image",
+            "position": {
+                "x": -1090,
+                "y": 53
+            }
+        },
+        {
+            "id": 24,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Mod",
+            "position": {
+                "x": -310.46275020619316,
+                "y": -49.23809230286133
+            }
+        },
+        {
+            "id": 23,
+            "internal-data": {
+                "number": 4
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -792.3407456297205,
+                "y": -28.238092302861332
+            }
+        },
+        {
+            "id": 16,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Time",
+            "position": {
+                "x": -952.7263201456873,
+                "y": -236.02028650929105
+            }
+        },
+        {
+            "id": 22,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Multiplication",
+            "position": {
+                "x": -641.5602785038558,
+                "y": -114.11614006216325
+            }
+        },
+        {
+            "id": 18,
+            "internal-data": {
+                "max": 1000,
+                "min": 0,
+                "value": 36.664514772177604
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -116.70196947273644,
+                "y": -59.45932085609695
+            }
+        },
+        {
+            "id": 3,
+            "internal-data": {
+                "source": "file:///home/arail/Downloads/paper-texture.jpg"
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Image",
+            "position": {
+                "x": -1085.1640625,
+                "y": 189.83203125
+            }
+        },
+        {
+            "id": 13,
+            "internal-data": {
+                "max": 3,
+                "min": 0,
+                "value": 1.15
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 306.9815374711849,
+                "y": 499.7310237539282
+            }
+        },
+        {
+            "id": 14,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Displacement",
+            "position": {
+                "x": 435.18953439574966,
+                "y": 74.84973119764607
+            }
+        },
+        {
+            "id": 6,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color Adjust",
+            "position": {
+                "x": -493.9472225988901,
+                "y": 165.76267827367155
+            }
+        }
+    ]
+}

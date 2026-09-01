@@ -7,23 +7,23 @@
 
 #include <QColor>
 
-class DisplacementNode : public NodeEditor::NodeModel {
+class ColorAdjustNode : public NodeEditor::NodeModel {
   Q_OBJECT
   QML_ELEMENT
   QML_UNCREATABLE("NodeModel")
 
   public:
-  Q_PROPERTY(SurfaceData *image READ image NOTIFY imageChanged)
-  Q_PROPERTY(SurfaceData *map READ map NOTIFY mapChanged)
-  Q_PROPERTY(float min READ min NOTIFY minChanged)
-  Q_PROPERTY(float max READ max NOTIFY maxChanged)
+  Q_PROPERTY(SurfaceData *source READ source NOTIFY sourceChanged)
+  Q_PROPERTY(float saturation READ saturation NOTIFY saturationChanged)
+  Q_PROPERTY(float brightness READ brightness NOTIFY brightnessChanged)
+  Q_PROPERTY(float contrast READ contrast NOTIFY contrastChanged)
 
-  DisplacementNode(QQmlEngine *engine);
-  ~DisplacementNode() = default;
+  ColorAdjustNode(QQmlEngine *engine);
+  ~ColorAdjustNode() = default;
 
   public:
   bool captionVisible() const override { return true; }
-  QString name() const override { return "Displacement"; }
+  QString name() const override { return "Color Adjust"; }
 
   QString portCaption(NodeEditor::PortSide portSide,
                       NodeEditor::PortIndex portIndex) const override;
@@ -39,21 +39,21 @@ class DisplacementNode : public NodeEditor::NodeModel {
   void setInData(std::shared_ptr<NodeEditor::NodeData> data,
                  NodeEditor::PortIndex portIndex) override;
 
-  SurfaceData *image() { return _image.lock().get(); }
-  SurfaceData *map() { return _map.lock().get(); }
-  float min() { return _min; }
-  float max() { return _max; }
+  SurfaceData *source() { return _source.lock().get(); }
+  float brightness() { return _brightness; }
+  float contrast() { return _contrast; }
+  float saturation() { return _saturation; }
 
   signals:
-  void imageChanged();
-  void mapChanged();
-  void minChanged();
-  void maxChanged();
+  void sourceChanged();
+  void brightnessChanged();
+  void contrastChanged();
+  void saturationChanged();
 
   private:
-  float _min = 0.0;
-  float _max = 3.0;
-  std::weak_ptr<SurfaceData> _image;
-  std::weak_ptr<SurfaceData> _map;
+  float _brightness = 0.0;
+  float _contrast = 1.0;
+  float _saturation = 1.0;
+  std::weak_ptr<SurfaceData> _source;
   std::shared_ptr<SurfaceData> _content;
 };

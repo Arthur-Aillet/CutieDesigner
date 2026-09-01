@@ -1,3 +1,4 @@
+#include "ColorAdjustNode.hpp"
 #include "CutieWindow.hpp"
 #include "DisplacementNode.hpp"
 #include "DitheringNode.hpp"
@@ -100,6 +101,7 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<StackNode>("Display");
   reg->registerModel<ImageDisplayNode>("Display");
   reg->registerModel<NoiseNode>("Display");
+  reg->registerModel<ColorAdjustNode>("Display");
   return reg;
 }
 

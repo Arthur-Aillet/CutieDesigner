@@ -13,10 +13,6 @@ DisplacementNode::DisplacementNode(QQmlEngine *engine) : NodeModel(engine) {
                                            QVariantMap{{"node", QVariant::fromValue(this)}});
 }
 
-QJsonObject DisplacementNode::save() const { return QJsonObject(); }
-
-void DisplacementNode::load(QJsonObject const &json) {}
-
 unsigned int DisplacementNode::nPorts(PortSide portSide) const {
   switch (portSide) {
   case PortSide::In:
