@@ -43,7 +43,7 @@ void VideoDisplayNode::load(QJsonObject const &json) {
   QJsonValue source = json["source"];
 
   if (!source.isUndefined()) {
-    _sourceUrl = source.toString();
+    setSource(source.toString());
   }
 }
 
