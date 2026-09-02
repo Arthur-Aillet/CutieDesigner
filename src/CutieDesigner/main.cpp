@@ -6,6 +6,7 @@
 #include "MaxNode.hpp"
 #include "MinNode.hpp"
 #include "ModNode.hpp"
+#include "OpenCVNode.hpp"
 #include "TimeController.hpp"
 
 #include "ColorInputNode.hpp"
@@ -87,6 +88,7 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<CombineVec2Node>("Process");
   reg->registerModel<SplitVec2Node>("Process");
   reg->registerModel<TextTyperNode>("Process");
+  reg->registerModel<OpenCVNode>("Process");
 
   reg->registerModel<DimensionNode>("Display");
   reg->registerModel<SurfaceDisplayNode>("Display");
