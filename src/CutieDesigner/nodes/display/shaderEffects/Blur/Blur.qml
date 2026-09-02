@@ -13,14 +13,12 @@ Item {
         surfaceData: blur.node.source
 
         visible: false
-        smooth: true
         layer.enabled: true
     }
 
-    GaussianBlur {
+    FastBlur {
         anchors.fill: sourceLoader
         source: sourceLoader
         radius: blur.node.radius
-        samples: 32
     }
 }

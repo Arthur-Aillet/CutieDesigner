@@ -12,7 +12,6 @@ Item {
         surfaceData: maskShader.node.image
 
         visible: false
-        smooth: true
         layer.enabled: true
     }
 
