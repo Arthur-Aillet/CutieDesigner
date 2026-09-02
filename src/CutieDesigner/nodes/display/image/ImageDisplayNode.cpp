@@ -12,7 +12,7 @@ ImageDisplayNode::ImageDisplayNode(QQmlEngine *engine) : NodeModel(engine) {
 
 QJsonObject ImageDisplayNode::save() const {
   if (_sourceUrl.has_value())
-    return QJsonObject({{"source", _sourceUrl->toDisplayString()}});
+    return QJsonObject({{"source", _sourceUrl->toDisplayString()}, {"tile", _tile}});
   return QJsonObject();
 }
 
@@ -21,6 +21,12 @@ void ImageDisplayNode::load(QJsonObject const &json) {
 
   if (!source.isUndefined()) {
     _sourceUrl = source.toString();
+  }
+
+  QJsonValue tile = json["tile"];
+
+  if (!source.isUndefined()) {
+    _tile = tile.toBool();
   }
 }
 
