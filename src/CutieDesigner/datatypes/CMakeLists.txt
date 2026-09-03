@@ -7,6 +7,7 @@ qt_add_qml_module(datatypes
   DecimalData.hpp
   DecimalData.cpp
   GradientData.hpp
+  PointsData.hpp
   SurfaceData.cpp
   SurfaceData.hpp
   TextData.hpp

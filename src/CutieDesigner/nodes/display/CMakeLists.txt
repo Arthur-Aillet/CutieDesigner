@@ -1,3 +1,7 @@
+set(ONNX_DIR "~/dev/onnxruntime-linux-x64-1.20.1")
+
+find_package(OpenCV 4.0.0 REQUIRED)
+
 qt_add_qml_module(display
   URI CutieDesigner.Nodes.Display
   SHARED
@@ -28,6 +32,7 @@ qt_add_qml_module(display
   video/VideoDisplayControl.qml
   Stack/Stack.qml
   Stack/StackControl.qml
+  mapPoints/MapPoints.qml
 
   SOURCES
   ${QT_AVPLAYER_SOURCES}
@@ -69,11 +74,15 @@ qt_add_qml_module(display
   noise/NoiseNode.hpp
   video/VideoDisplayNode.hpp
   video/VideoDisplayNode.cpp
+  opencv/OpenCVNode.cpp
+  opencv/OpenCVNode.hpp
+  mapPoints/MapPointsNode.cpp
+  mapPoints/MapPointsNode.hpp
 
   DEPENDENCIES QtQuick QtQuick.Layout NodeEditor CutieUiModule CutieDesigner.Datatypes
   RESOURCES
   AType/Ukrug/UkrugPointsData.json
-  )
+)
 
   qt6_add_shaders(display "display_shaders"
   PREFIX
@@ -119,9 +128,13 @@ target_include_directories(display
   image
   video
   noise
+  opencv
+  mapPoints
+  ${ONNX_DIR}/include
   ${QT_AVPLAYER_DIR}/..
   ${Qt6MultimediaQuick_PRIVATE_INCLUDE_DIRS}
   ${Qt6Multimedia_PRIVATE_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 target_compile_definitions(display PRIVATE QT_AVPLAYER_MULTIMEDIA)
@@ -140,4 +153,7 @@ target_link_libraries(display PUBLIC
   vivid
   datatypes
   ${QT_AVPLAYER_LIBS}
+  ${ONNX_DIR}/lib/libonnxruntime.so
+  PRIVATE
+  ${OpenCV_LIBS}
 )

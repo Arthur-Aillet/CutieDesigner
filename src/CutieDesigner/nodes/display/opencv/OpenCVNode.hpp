@@ -1,8 +1,41 @@
 #pragma once
 
+#include "PointsData.hpp"
 #include "SurfaceData.hpp"
+
 #include <NodeEditor/NodeModel>
+
+#include <QImageCapture>
+
 #include <memory>
+
+#include "yolos/tasks/pose.hpp"
+
+#include <QImage>
+#include <QVector2D>
+#include <optional>
+
+class OpenCVWorker : public QObject {
+  Q_OBJECT
+
+  public:
+  OpenCVWorker();
+
+  public slots:
+  void newImage(QImage image);
+  void start();
+  void stop();
+
+  signals:
+  void finished();
+  void resultReady(QList<QVector2D> points);
+
+  private:
+  QTime _lastCapture;
+  std::unique_ptr<yolos::pose::YOLOPoseDetector> _detector;
+  std::optional<QImage> _currentImage;
+  bool _running;
+};
 
 class OpenCVNode : public NodeEditor::NodeModel {
   Q_OBJECT
@@ -31,6 +64,19 @@ class OpenCVNode : public NodeEditor::NodeModel {
   void setInData(std::shared_ptr<NodeEditor::NodeData> data,
                  NodeEditor::PortIndex portIndex) override;
 
+  public slots:
+  void cameraStarted();
+  void cameraStopped();
+  void imageCaptured(int id, const QImage &image);
+
   private:
+  bool _running = false;
+  QQuickItem *_cameraHandler;
+  QImageCapture *_imageCapture;
+  OpenCVWorker *_worker;
+  QThread *_thread;
+
+  QList<QVector2D> _points;
   std::weak_ptr<SurfaceData> _surface;
+  std::shared_ptr<PointsData> _pointsData;
 };

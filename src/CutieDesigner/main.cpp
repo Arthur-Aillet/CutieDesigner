@@ -3,6 +3,7 @@
 #include "CutieWindow.hpp"
 #include "DisplacementNode.hpp"
 #include "DitheringNode.hpp"
+#include "MapPointsNode.hpp"
 #include "MaxNode.hpp"
 #include "MinNode.hpp"
 #include "ModNode.hpp"
@@ -88,8 +89,8 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<CombineVec2Node>("Process");
   reg->registerModel<SplitVec2Node>("Process");
   reg->registerModel<TextTyperNode>("Process");
-  reg->registerModel<OpenCVNode>("Process");
 
+  reg->registerModel<OpenCVNode>("Display");
   reg->registerModel<DimensionNode>("Display");
   reg->registerModel<SurfaceDisplayNode>("Display");
   reg->registerModel<UkrugNode>("Display");
@@ -106,6 +107,7 @@ static NodeEditor::NodeModelRegistry *createRegistery(QQmlEngine &engine) {
   reg->registerModel<NoiseNode>("Display");
   reg->registerModel<ColorAdjustNode>("Display");
   reg->registerModel<BlurNode>("Display");
+  reg->registerModel<MapPointsNode>("Display");
   return reg;
 }
 

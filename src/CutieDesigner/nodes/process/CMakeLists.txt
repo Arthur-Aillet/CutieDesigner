@@ -1,5 +1,3 @@
-find_package(OpenCV REQUIRED)
-
 qt_add_qml_module(process
   URI CutieDesigner.Nodes.Process
   SHARED
@@ -36,8 +34,6 @@ qt_add_qml_module(process
   vectors/CombineVec2Node.hpp
   vectors/SplitVec2Node.cpp
   vectors/SplitVec2Node.hpp
-  opencv/OpenCVNode.cpp
-  opencv/OpenCVNode.hpp
 
   DEPENDENCIES QtQuick QtQuick.Layout NodeEditor CutieUiModule CutieDesigner.Datatypes
 )
@@ -47,14 +43,6 @@ target_link_directories(process
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-
-message(STATUS "OpenCV library status:")
-message(STATUS "    config: ${OpenCV_DIR}")
-message(STATUS "    version: ${OpenCV_VERSION}")
-message(STATUS "    libraries: ${OpenCV_LIBS}")
-message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
-
-
 target_include_directories(process
   PUBLIC
   color
@@ -62,8 +50,6 @@ target_include_directories(process
   TextTyper
   vectors
   opencv
-  PRIVATE
-  ${OpenCV_INCLUDE_DIRS}
 )
 
 target_link_libraries(process PUBLIC
@@ -77,8 +63,6 @@ target_link_libraries(process PUBLIC
   vivid
   datatypes
   time
-  PRIVATE
-  ${OpenCV_LIBS}
 )
 
 target_compile_definitions(process PRIVATE GLM_ENABLE_EXPERIMENTAL)

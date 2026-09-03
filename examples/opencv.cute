@@ -1,0 +1,79 @@
+{
+    "connections": [
+        {
+            "inNodeId": 1,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 0,
+            "inPortIndex": 0,
+            "outNodeId": 3,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 0,
+            "outNodeId": 4,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 1,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": 3,
+            "internal-data": {
+                "portsCount": 2
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Stack",
+            "position": {
+                "x": 515.0000050862631,
+                "y": 138
+            }
+        },
+        {
+            "id": 2,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "OpenCV",
+            "position": {
+                "x": 138.00000508626306,
+                "y": 189
+            }
+        },
+        {
+            "id": 1,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Map points",
+            "position": {
+                "x": 282.00000508626306,
+                "y": 188
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Camera",
+            "position": {
+                "x": 275.00000508626306,
+                "y": 89
+            }
+        }
+    ]
+}
