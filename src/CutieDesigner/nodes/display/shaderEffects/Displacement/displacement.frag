@@ -46,17 +46,17 @@ float lerp(float fac) {
   return minDisp + (maxDisp - minDisp) * fac;
 }
 
-vec3 sampleDisp(vec2 uv, vec2 dispNorm) {
-    vec3 col = vec3(0);
+vec4 sampleDisp(vec2 uv, vec2 dispNorm) {
+    vec4 col = vec4(0);
     const float SD = 1.0 / float(SAMPLES);
     float wl = 0.0;
-    vec3 denom = vec3(0);
+    vec4 denom = vec4(0);
     for(int i = 0; i < SAMPLES; i++) {
-        vec3 sw = vec3(wl);
-        // vec3 sw = sampleWeights(wl);
+        vec4 sw = vec4(wl);
+        // vec4 sw = sampleWeights(wl);
         denom += sw;
         vec2 displacement = vec2(lerp(dispNorm.x * wl) / imageRect.z, lerp(dispNorm.y * wl) / imageRect.w);
-        col += sw * texture(image, uv + displacement).xyz;
+        col += sw * texture(image, uv + displacement);
         wl  += SD;
     }
 
@@ -69,8 +69,7 @@ void main() {
   vec2 mappedCoord = fragCoord + (imageRect.xy - mapRect.xy);
   vec4 mapText = texture(map, mappedCoord / imageRect.zw);
 
-  fragColor.rgb = sampleDisp(texCoord, mapText.rg);
-  fragColor.a = 1.0;
+  fragColor = sampleDisp(texCoord, mapText.rg);
   fragColor *= qt_Opacity;
 }
 

@@ -13,6 +13,7 @@
 
 #include <memory>
 #include <optional>
+#include <qvectornd.h>
 
 using namespace NodeEditor;
 
@@ -37,13 +38,12 @@ void OpenCVWorker::start() {
     cv::Mat frame(conv.height(), conv.width(), CV_8UC3, (cv::Scalar *)conv.scanLine(0));
     auto poses = _detector->detect(frame);
 
-    QList<QVector2D> _points = {};
+    PointsData::PointCollection _points = {};
 
     for (auto &pose : poses) {
-      for (auto &point : pose.keypoints) {
-        if (point.confidence > 0.25) {
-          _points.push_back(QVector2D(point.x, point.y));
-        }
+      for (int i = 0; i != pose.keypoints.size(); i++) {
+        auto &point = pose.keypoints[i];
+        _points.push_back(Keypoint{QVector2D(point.x, point.y), point.confidence, i});
       }
     }
     _mutex.lock();
@@ -102,7 +102,7 @@ void OpenCVNode::cameraStarted() {
   connect(_worker, SIGNAL(finished()), _thread, SLOT(quit()));
   connect(_worker, SIGNAL(finished()), _worker, SLOT(deleteLater()));
   connect(_thread, SIGNAL(finished()), _thread, SLOT(deleteLater()));
-  connect(_worker, &OpenCVWorker::resultReady, [this](QList<QVector2D> points) {
+  connect(_worker, &OpenCVWorker::resultReady, [this](PointsData::PointCollection points) {
     _points = points;
     emit dataUpdated(0);
   });

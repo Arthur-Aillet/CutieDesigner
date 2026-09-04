@@ -1,7 +1,8 @@
 #pragma once
 
+#include "PointsData.hpp"
 #include "SurfaceData.hpp"
-#include "qvectornd.h"
+
 #include <NodeEditor/NodeModel>
 
 #include <QGradient>
@@ -14,7 +15,8 @@ class MapPointsNode : public NodeEditor::NodeModel {
   QML_UNCREATABLE("NodeModel")
 
   public:
-  Q_PROPERTY(QList<QVector2D> points READ points NOTIFY pointsChanged)
+  Q_PROPERTY(SurfaceData *surface READ getSurface NOTIFY surfaceChanged)
+  Q_PROPERTY(QList<Keypoint> points READ points NOTIFY pointsChanged)
 
   MapPointsNode(QQmlEngine *engine);
   ~MapPointsNode() = default;
@@ -37,13 +39,16 @@ class MapPointsNode : public NodeEditor::NodeModel {
   void setInData(std::shared_ptr<NodeEditor::NodeData> data,
                  NodeEditor::PortIndex portIndex) override;
 
-  QList<QVector2D> points();
+  PointsData::PointCollection points();
+  SurfaceData *getSurface() { return _surface.lock().get(); }
 
   signals:
   void pointsChanged();
+  void surfaceChanged();
 
   private:
   QGradient _defaultGradient;
   std::weak_ptr<NodeEditor::NodeData> _points;
+  std::weak_ptr<SurfaceData> _surface;
   std::shared_ptr<SurfaceData> _content;
 };

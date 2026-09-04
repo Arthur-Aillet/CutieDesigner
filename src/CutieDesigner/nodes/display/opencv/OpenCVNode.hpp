@@ -28,7 +28,7 @@ class OpenCVWorker : public QObject {
 
   signals:
   void finished();
-  void resultReady(QList<QVector2D> points);
+  void resultReady(PointsData::PointCollection points);
 
   private:
   QTime _lastCapture;
@@ -77,7 +77,7 @@ class OpenCVNode : public NodeEditor::NodeModel {
   OpenCVWorker *_worker;
   QThread *_thread;
 
-  QList<QVector2D> _points;
+  PointsData::PointCollection _points;
   std::weak_ptr<SurfaceData> _surface;
   std::shared_ptr<PointsData> _pointsData;
 };

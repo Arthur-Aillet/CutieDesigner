@@ -16,7 +16,7 @@ MapPointsNode::MapPointsNode(QQmlEngine *engine) : NodeModel(engine) {
 unsigned int MapPointsNode::nPorts(PortSide portSide) const {
   switch (portSide) {
   case PortSide::In:
-    return 1;
+    return 2;
   default:
     return 1;
   };
@@ -28,6 +28,8 @@ NodeDataType MapPointsNode::dataType(PortSide portSide, PortIndex portIndex) con
     switch (portIndex) {
     case 0:
       return PointsData().type();
+    case 1:
+      return SurfaceData().type();
     }
   default:
     return SurfaceData().type();
@@ -43,6 +45,10 @@ void MapPointsNode::setInData(std::shared_ptr<NodeData> data, PortIndex portInde
       _points.reset();
       emit pointsChanged();
       break;
+    case 1:
+      _surface.reset();
+      emit surfaceChanged();
+      return;
     }
   } else {
     switch (portIndex) {
@@ -50,6 +56,10 @@ void MapPointsNode::setInData(std::shared_ptr<NodeData> data, PortIndex portInde
       _points = data;
       emit pointsChanged();
       break;
+    case 1:
+      _surface = std::dynamic_pointer_cast<SurfaceData>(data);
+      emit surfaceChanged();
+      return;
     }
   }
 }
@@ -60,15 +70,17 @@ QString MapPointsNode::portCaption(PortSide portSide, PortIndex portIndex) const
     switch (portIndex) {
     case 0:
       return "points";
+    case 1:
+      return "in";
     }
   default:
     return "out";
   }
 }
 
-QList<QVector2D> MapPointsNode::points() {
+PointsData::PointCollection MapPointsNode::points() {
   if (_points.expired()) {
-    return QList<QVector2D>();
+    return PointsData::PointCollection();
   }
-  return _points.lock()->repr<QList<QVector2D>>();
+  return _points.lock()->repr<PointsData::PointCollection>();
 }

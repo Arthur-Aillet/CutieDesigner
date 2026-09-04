@@ -1,0 +1,285 @@
+{
+    "connections": [
+        {
+            "inNodeId": 14,
+            "inPortIndex": 0,
+            "outNodeId": 6,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 0,
+            "inPortIndex": 0,
+            "outNodeId": 7,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 1,
+            "outNodeId": 3,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 1,
+            "outNodeId": 13,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 7,
+            "inPortIndex": 1,
+            "outNodeId": 8,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 3,
+            "outNodeId": 9,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 1,
+            "inPortIndex": 0,
+            "outNodeId": 2,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 7,
+            "inPortIndex": 0,
+            "outNodeId": 4,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 0,
+            "outNodeId": 1,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 6,
+            "inPortIndex": 0,
+            "outNodeId": 12,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 2,
+            "outNodeId": 10,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 8,
+            "inPortIndex": 1,
+            "outNodeId": 14,
+            "outPortIndex": 0
+        },
+        {
+            "inNodeId": 3,
+            "inPortIndex": 0,
+            "outNodeId": 11,
+            "outPortIndex": 4
+        },
+        {
+            "inNodeId": 14,
+            "inPortIndex": 2,
+            "outNodeId": 15,
+            "outPortIndex": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": 11,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Time",
+            "position": {
+                "x": -824.8476359049479,
+                "y": -32.60546875
+            }
+        },
+        {
+            "id": 6,
+            "internal-data": {
+                "mode": 1
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Noise",
+            "position": {
+                "x": -231.99999491373694,
+                "y": -38
+            }
+        },
+        {
+            "id": 14,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Color Adjust",
+            "position": {
+                "x": 181.58986409505212,
+                "y": 70.8828125
+            }
+        },
+        {
+            "id": 12,
+            "internal-data": {
+                "max": 1,
+                "min": 0,
+                "value": 0.7028563161375655
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -606.8476359049479,
+                "y": -73.60546875
+            }
+        },
+        {
+            "id": 10,
+            "internal-data": {
+                "max": 0,
+                "min": -10,
+                "value": -3
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": 6.803375244140625,
+                "y": 389.10546875
+            }
+        },
+        {
+            "id": 2,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "OpenCV",
+            "position": {
+                "x": -164.99999491373694,
+                "y": 230
+            }
+        },
+        {
+            "id": 4,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Camera",
+            "position": {
+                "x": 341.00000508626306,
+                "y": 11
+            }
+        },
+        {
+            "id": 7,
+            "internal-data": {
+                "portsCount": 4
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Stack",
+            "position": {
+                "x": 582.2018280029297,
+                "y": 212.24609375
+            }
+        },
+        {
+            "id": 5,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Fill",
+            "position": {
+                "x": -319.99999491373694,
+                "y": 112
+            }
+        },
+        {
+            "id": 13,
+            "internal-data": {
+                "number": 3
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Number",
+            "position": {
+                "x": -637.7382609049479,
+                "y": 189.1484375
+            }
+        },
+        {
+            "id": 3,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Multiplication",
+            "position": {
+                "x": -509.79300944010413,
+                "y": 62.390625
+            }
+        },
+        {
+            "id": 15,
+            "internal-data": {
+                "max": 10,
+                "min": 0,
+                "value": 1.3823745008438248
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -164,
+                "y": 95
+            }
+        },
+        {
+            "id": 8,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Displacement",
+            "position": {
+                "x": 372.820302327474,
+                "y": 288.00390625
+            }
+        },
+        {
+            "id": 1,
+            "internal-data": {
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Map points",
+            "position": {
+                "x": -12.999994913736941,
+                "y": 212
+            }
+        },
+        {
+            "id": 9,
+            "internal-data": {
+                "max": 10,
+                "min": 0,
+                "value": 3
+            },
+            "label": "",
+            "labelVisible": false,
+            "model-name": "Slider",
+            "position": {
+                "x": -32.531260172526004,
+                "y": 452.88671875
+            }
+        }
+    ]
+}
