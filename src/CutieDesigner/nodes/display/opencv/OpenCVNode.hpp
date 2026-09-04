@@ -32,6 +32,7 @@ class OpenCVWorker : public QObject {
 
   private:
   QTime _lastCapture;
+  QMutex _mutex;
   std::unique_ptr<yolos::pose::YOLOPoseDetector> _detector;
   std::optional<QImage> _currentImage;
   bool _running;

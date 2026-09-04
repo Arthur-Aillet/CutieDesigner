@@ -24,11 +24,16 @@ OpenCVWorker::OpenCVWorker()
 void OpenCVWorker::start() {
   _running = true;
   while (_running) {
+    _mutex.lock();
     if (!_currentImage.has_value()) {
+      _mutex.unlock();
       QThread::msleep(20);
       continue;
     }
     QImage conv = _currentImage->convertedTo(QImage::Format_BGR888);
+    _mutex.unlock();
+    // QImage resize = conv.scaled(1280, 1280, Qt::KeepAspectRatioByExpanding);
+    // resize = resize.scaled(640, 640, Qt::KeepAspectRatio);
     cv::Mat frame(conv.height(), conv.width(), CV_8UC3, (cv::Scalar *)conv.scanLine(0));
     auto poses = _detector->detect(frame);
 
@@ -41,20 +46,28 @@ void OpenCVWorker::start() {
         }
       }
     }
+    _mutex.lock();
     _currentImage = std::nullopt_t({});
+    _mutex.unlock();
     emit resultReady(_points);
   }
   emit finished();
 }
 
 void OpenCVWorker::stop() { _running = false; }
-void OpenCVWorker::newImage(QImage image) { _currentImage = image; }
+void OpenCVWorker::newImage(QImage image) {
+  _mutex.lock();
+  _currentImage = image;
+  _mutex.unlock();
+}
 
 void OpenCVNode::imageCaptured(int id, const QImage &image) {
-  if (!_running || image.isNull()) {
+  if (!_running) {
     return;
   }
-  _worker->newImage(image);
+  if (!image.isNull()) {
+    _worker->newImage(image);
+  }
   _imageCapture->capture();
 }
 
